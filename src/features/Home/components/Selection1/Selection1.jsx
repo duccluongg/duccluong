@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-
+import FormatCash from '../../../../constants/FormatCash';
 const Selection1 = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
@@ -48,11 +48,10 @@ const Selection1 = () => {
                   <h4 className={styles.home__productitemsname}>{item.name}</h4>
                   <div className={styles.home__productprice}>
                     <span className={styles.home__productitemsprice}>
-                      {item.sale_price} đ
+                      {FormatCash(item.sale_price.toString())} đ
                     </span>
                     <div className={styles.btn_cart}>
                       <i className="fas fa-search"></i>
-                      Details
                     </div>
                   </div>
                 </div>
