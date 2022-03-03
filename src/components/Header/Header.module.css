@@ -18,6 +18,9 @@
   letter-spacing: 2px;
   font-size: 14px;
 }
+.nameShop i {
+  margin-right: 5px;
+}
 .info {
   display: flex;
   justify-content: space-between;

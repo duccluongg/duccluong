@@ -3,8 +3,29 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 const Header = () => {
+  const history = useHistory();
   const [category, setCategory] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [searchList, setSearchList] = useState([]);
+  const handleSearch = (e) => {
+    const temp = e.target.value;
+    if (temp === '') {
+      setSearchList([]);
+    } else {
+      const getApi = `https://yshuynh.pythonanywhere.com/api/products/lite?page_size=10&search_name=${temp}`;
+      axios.get(getApi).then((response) => {
+        setSearchList(response.data.results);
+      });
+    }
+  };
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+  const showModal = () => {
+    setModal(!modal);
+  };
   useEffect(() => {
     const getCategoryAPI = 'https://yshuynh.pythonanywhere.com/api/categories';
     axios
@@ -21,16 +42,29 @@ const Header = () => {
     <React.Fragment>
       <div className={styles.Header}>
         <div className={styles.container}>
-          <div>TECHSTORE</div>
+          <div className={styles.nameShop}>
+            {' '}
+            <i class="fas fa-laptop"></i>TECHSTORE
+          </div>
           <div className={styles.info}>
-            <div className={styles.search}>
+            <div onClick={showModal} className={styles.search}>
               <i className="fas fa-search"></i>
             </div>
             <div className={styles.acc}>
               Tài khoản
               <ul className={styles.notifyList}>
-                <div className={styles.notifyItem}>Đăng nhập</div>
-                <div className={styles.notifyItem}>Đăng ký</div>
+                <div
+                  onClick={() => history.push('/login')}
+                  className={styles.notifyItem}
+                >
+                  Đăng nhập
+                </div>
+                <div
+                  onClick={() => history.push('/register')}
+                  className={styles.notifyItem}
+                >
+                  Đăng ký
+                </div>
               </ul>
             </div>
             <div className={styles.cart}>
@@ -57,6 +91,39 @@ const Header = () => {
           ))}
         </div>
       </div>
+      {modal && (
+        <div className={styles.modal}>
+          <div className={styles.overLay}>
+            <div>
+              <div className={styles.searchBox}>
+                <i className="fas fa-search"></i>
+                <input
+                  className={styles.searchTxt}
+                  type="text"
+                  name="productName_contains"
+                  placeholder="Type to search"
+                  onKeyUp={handleSearch}
+                  autoComplete="off"
+                />
+
+                <i onClick={toggleModal} className="fas fa-times"></i>
+              </div>
+              <div className={styles.listSearch}>
+                {searchList.map((item) => (
+                  <div
+                    onClick={() => history.push(`/productDetail/${item.id}`)}
+                    key={item.id}
+                    className={styles.itemSearch}
+                  >
+                    <img src={item.thumbnail} alt="thumbnail" />
+                    <div className={styles.nameItem}>{item.name}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 };
