@@ -3,7 +3,9 @@ import styles from './Home.module.css';
 import Header from '../../components/Header/Header';
 import Selection1 from './components/Selection1/Selection1';
 import Selection2 from './components/Selection2/Selection2';
+import Selection3 from './components/Selection3/Selection3';
 import Selection4 from './components/Selection4/Selection4';
+import Selection5 from './components/Selection5/Selection5';
 import Footer from '../../components/Footer/Footer';
 const Home = () => {
   return (
@@ -21,9 +23,9 @@ const Home = () => {
       </div>
       <Selection1 />
       <Selection2 />
-      <Selection1 />
+      <Selection3 />
       <Selection4 />
-      <Selection1 />
+      <Selection5 />
       <Footer />
     </React.Fragment>
   );
