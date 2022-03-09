@@ -11,7 +11,6 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
-
   const { id } = useParams();
   useEffect(() => {
     if (id) {
