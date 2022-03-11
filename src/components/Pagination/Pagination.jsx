@@ -9,20 +9,25 @@ const Pagination = ({ pagination, onPageChange }) => {
       onPageChange(newPage);
     }
   }
+
+  const desPage = () => {
+    handlePageChange(page - 1);
+  };
+
+  const upPage = () => {
+    handlePageChange(page + 1);
+  };
+
   return (
     <div className={styles.pagination}>
-      <button
-        className={styles.button}
-        disabled={page <= 1}
-        onClick={() => handlePageChange(page - 1)}
-      >
+      <button className={styles.button} disabled={page <= 1} onClick={desPage}>
         <i className="fas fa-angle-left"></i>
       </button>
       <span>{page}</span>
       <button
         className={styles.button}
         disabled={page >= totalPages}
-        onClick={() => handlePageChange(page + 1)}
+        onClick={upPage}
       >
         <i className="fas fa-angle-right"></i>
       </button>
@@ -30,11 +35,15 @@ const Pagination = ({ pagination, onPageChange }) => {
   );
 };
 Pagination.propTypes = {
-  pagination: PropTypes.object.isRequired,
+  pagination: PropTypes.shape({
+    page: PropTypes.number.isRequired,
+    page_size: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+  }),
   onPageChange: PropTypes.func,
 };
 Pagination.defaultProps = {
-  onPageChange: null,
+  onPageChange: () => {},
 };
 
 export default Pagination;

@@ -1,27 +1,27 @@
 import React from 'react';
-import styles from './Selection3.module.css';
+import styles from './Selection5.module.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-const Selection3 = () => {
+const Selection5 = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
   const history = useHistory();
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=1`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=4`;
     axios.get(getApi).then((response) => {
       setProduct(response.data.results);
     });
   }, []);
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/1`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/4`;
     axios.get(getApi).then((response) => {
       setCategory(response.data);
     });
   }, []);
   const click = () => {
-    history.push(`/productList/7`);
+    history.push(`/productList/4`);
   };
   return (
     <div className={styles.selection}>
@@ -69,4 +69,4 @@ const Selection3 = () => {
   );
 };
 
-export default Selection3;
+export default Selection5;

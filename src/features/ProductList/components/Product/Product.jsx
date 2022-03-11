@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../ProductList.module.css';
 import { Link } from 'react-router-dom';
-import FormatCash from '../../../../constants/FormatCash';
+import FormatCash from '../../../../utils/FormatCash';
 const Product = ({ product }) => {
   return (
     <div className={styles.home__product}>

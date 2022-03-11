@@ -11,6 +11,7 @@ const Selection2 = () => {
     'https://i.pinimg.com/originals/a4/a5/9d/a4a59dd3720921ad90b8aacaf0bfe368.jpg',
     'https://1.bp.blogspot.com/-wsFHUVRfODc/X7toIcrduhI/AAAAAAAAA_s/XjR0iRYOj5kZxhRdQAuhmOVeA2A7aqI4wCLcBGAsYHQ/s2048/techontop-huong-dan-trang-tri-goc-choi-game-1.jpg',
   ];
+
   return (
     <div className={styles.selection}>
       <div className={styles.container}>

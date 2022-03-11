@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-import FormatCash from '../../../../constants/FormatCash';
+import FormatCash from '../../../../utils/FormatCash';
 const Selection1 = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
@@ -15,15 +15,18 @@ const Selection1 = () => {
       setProduct(response.data.results);
     });
   }, []);
+
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/categories/3`;
     axios.get(getApi).then((response) => {
       setCategory(response.data);
     });
   }, []);
+
   const click = () => {
     history.push(`/productList/7`);
   };
+
   return (
     <div className={styles.selection}>
       <div className={styles.header}>
