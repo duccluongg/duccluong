@@ -17,6 +17,7 @@ const Header = () => {
         alert('Xảy ra lỗi');
       });
   }, []);
+
   return (
     <React.Fragment>
       <div className={styles.Header}>
