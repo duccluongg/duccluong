@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../CheckOut.module.css';
+
 const InfoCheckOut = () => {
   return (
     <div className={styles.col4}>
