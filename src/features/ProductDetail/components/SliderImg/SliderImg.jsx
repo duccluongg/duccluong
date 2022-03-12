@@ -6,7 +6,7 @@ import './SliderImg.scss';
 
 const SliderImg = ({ productImg = [] }) => {
   const [activeThumb, setActiveThumb] = useState();
-  
+
   return (
     <div>
       <Swiper

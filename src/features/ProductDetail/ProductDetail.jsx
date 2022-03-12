@@ -23,7 +23,7 @@ const ProductDetail = () => {
       });
     }
   }, [id]);
-
+  
   return (
     <React.Fragment>
       <Header />
