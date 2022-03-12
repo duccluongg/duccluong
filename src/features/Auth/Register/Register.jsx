@@ -5,11 +5,13 @@ import { IconButton, InputAdornment, Button } from '@mui/material';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import styles from './Register.module.css';
+
 const Register = () => {
   const [password, setPassWord] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleChangePass = (event) => setPassWord(event.target.value);
+  
   return (
     <div className={styles.container}>
       <div className={styles.col7}></div>
