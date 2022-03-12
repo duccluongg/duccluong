@@ -1,0 +1,67 @@
+.info {
+  width: 100%;
+}
+.ProductName {
+  font-size: 21px;
+  font-weight: 500;
+  color: rgb(13, 17, 54);
+  line-height: 1.2;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+.ProductBand {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(13, 17, 54);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  line-height: 22px;
+}
+.ProductPriceWapper {
+  text-decoration: line-through;
+  color: #929292;
+  font-weight: 600;
+}
+.ProductCartWapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.needToLogin {
+  margin-top: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ProductPriceSale {
+  font-size: 19px;
+  font-weight: 600;
+  color: rgb(0, 158, 127);
+}
+/* .btn {
+    display: flex;
+    justify-content: center;
+  } */
+.button {
+  position: relative;
+  display: block;
+  color: black;
+  font-size: 13px;
+  font-family: 'Roboto Slab', serif;
+  margin: 12px 0;
+  /* border: 2px solid #ff7675; */
+  padding: 10px 50px;
+  text-transform: uppercase;
+  transition: 1s all ease;
+  background: none;
+  outline: none;
+  border: 1px solid #333;
+  margin-top: 20px;
+}
+.button:hover {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}

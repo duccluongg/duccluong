@@ -1,0 +1,13 @@
+.container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+}
+.col51 {
+  width: 50%;
+  padding: 100px 36px;
+}
+.col5 {
+  width: 50%;
+  margin-right: 50px;
+}
