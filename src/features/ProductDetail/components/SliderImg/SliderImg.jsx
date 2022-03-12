@@ -3,9 +3,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs } from 'swiper';
 import { useState } from 'react';
 import './SliderImg.scss';
-const SliderImg = ({ productImg }) => {
+
+const SliderImg = ({ productImg = [] }) => {
   const [activeThumb, setActiveThumb] = useState();
-  console.log(productImg);
+
   return (
     <div>
       <Swiper
