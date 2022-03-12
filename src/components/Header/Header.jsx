@@ -66,12 +66,12 @@ const Header = () => {
                 </div>
               </ul>
             </div>
-            <div className={styles.cart}>
+            <Link to="/cart" className={styles.cart}>
               Giỏ hàng
               <i className="fas fa-shopping-cart">
                 <span>1</span>
               </i>
-            </div>
+            </Link>
           </div>
         </div>
         <div className={styles.border}></div>
