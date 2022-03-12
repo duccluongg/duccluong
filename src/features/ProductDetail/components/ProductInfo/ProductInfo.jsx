@@ -11,7 +11,6 @@ const ProductInfo = ({ product }) => {
         className={styles.ProductDescription}
         dangerouslySetInnerHTML={{ __html: product?.short_description }}
       ></div>
-
       <div className={styles.ProductCartWapper}>
         <div className={styles.ProductPriceWapper}>
           {FormatCash(`${product?.sale_price}`)} đ
