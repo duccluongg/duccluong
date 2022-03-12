@@ -3,11 +3,13 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import styles from './Profile.module.css';
 import { useHistory } from 'react-router';
+
 const Profile = () => {
   const history = useHistory();
   const toAcc = () => history.push('/account');
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/listOrder');
+  
   return (
     <div>
       <Header />
