@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import styles from './CheckOut.module.css';
 import InfoCheckOut from './Components/InfoCheckOut';
 import SlideCheckOut from './Components/SlideCheckOut';
+
 const CheckOut = () => {
   return (
     <React.Fragment>
