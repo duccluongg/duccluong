@@ -11,7 +11,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleChangePass = (event) => setPassWord(event.target.value);
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.col7}></div>

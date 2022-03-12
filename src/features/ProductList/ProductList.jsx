@@ -40,7 +40,6 @@ const ProductList = () => {
         alert('Xảy ra lỗi');
       });
   }, []);
-
   useEffect(() => {
     const param = queryString.stringify(filters);
     const brandId = query.get('brand');
@@ -58,7 +57,6 @@ const ProductList = () => {
         alert('Xảy ra lỗi');
       });
   }, [id, filters]);
-
   const handlePageChange = (newPage) => {
     setFilters({
       ...filters,
@@ -69,7 +67,6 @@ const ProductList = () => {
       search: queryString.stringify(filters),
     });
   };
-
   return (
     <div>
       <Header />
