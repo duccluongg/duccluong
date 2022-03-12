@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ProductInfo.module.css';
 import FormatCash from '../../../../constants/FormatCash';
+
 const ProductInfo = ({ product }) => {
   return (
     <div className={styles.info}>
