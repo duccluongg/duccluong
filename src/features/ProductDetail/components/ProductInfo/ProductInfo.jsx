@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ProductInfo.module.css';
 import FormatCash from '../../../../constants/FormatCash';
+
 const ProductInfo = ({ product }) => {
   return (
     <div className={styles.info}>
@@ -10,7 +11,6 @@ const ProductInfo = ({ product }) => {
         className={styles.ProductDescription}
         dangerouslySetInnerHTML={{ __html: product?.short_description }}
       ></div>
-
       <div className={styles.ProductCartWapper}>
         <div className={styles.ProductPriceWapper}>
           {FormatCash(`${product?.sale_price}`)} đ

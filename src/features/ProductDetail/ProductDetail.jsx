@@ -9,10 +9,12 @@ import 'swiper/css/thumbs';
 import ProductInfo from './components/ProductInfo/ProductInfo';
 import axios from 'axios';
 import { useParams } from 'react-router';
+
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
-
   const { id } = useParams();
+  const productImg = product?.images;
+  
   useEffect(() => {
     if (id) {
       const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;
@@ -21,8 +23,7 @@ const ProductDetail = () => {
       });
     }
   }, [id]);
-  const productImg = product?.images;
-  console.log(productImg);
+
   return (
     <React.Fragment>
       <Header />

@@ -10,6 +10,7 @@ import { useLocation, useParams } from 'react-router';
 import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import { useHistory } from 'react-router';
+
 const ProductList = () => {
   const history = useHistory();
   const { id } = useParams();
@@ -21,11 +22,13 @@ const ProductList = () => {
     page_size: 12,
     page: 1,
   });
+  
   const [pagination, setPagination] = useState({
     page: 1,
     page_size: 12,
     totalRows: 11,
   });
+  
   useEffect(() => {
     const getCategoryAPI = 'https://yshuynh.pythonanywhere.com/api/categories';
     axios
@@ -34,10 +37,10 @@ const ProductList = () => {
         setCategory(res.data);
       })
       .catch((err) => {
-        console.log(err);
         alert('Xảy ra lỗi');
       });
   }, []);
+
   useEffect(() => {
     const param = queryString.stringify(filters);
     const brandId = query.get('brand');
@@ -52,12 +55,11 @@ const ProductList = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         alert('Xảy ra lỗi');
       });
   }, [id, filters]);
+
   const handlePageChange = (newPage) => {
-    console.log(newPage);
     setFilters({
       ...filters,
       page: newPage,
@@ -67,6 +69,7 @@ const ProductList = () => {
       search: queryString.stringify(filters),
     });
   };
+
   return (
     <div>
       <Header />
