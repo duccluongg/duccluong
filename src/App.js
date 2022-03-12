@@ -4,6 +4,7 @@ import Home from './features/Home/Home';
 import ProductList from './features/ProductList/ProductList';
 import ProductDetail from './features/ProductDetail/ProductDetail';
 import Cart from './features/Cart/Cart';
+
 function App() {
   return (
     <div className="App">
