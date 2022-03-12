@@ -4,11 +4,14 @@ import axios from 'axios';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
+
 const Header = () => {
   const history = useHistory();
   const [category, setCategory] = useState([]);
   const [modal, setModal] = useState(false);
   const [searchList, setSearchList] = useState([]);
+  const toggleModal = () => setModal(!modal);
+  
   const handleSearch = (e) => {
     const temp = e.target.value;
     if (temp === '') {
@@ -20,12 +23,7 @@ const Header = () => {
       });
     }
   };
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-  const showModal = () => {
-    setModal(!modal);
-  };
+    
   useEffect(() => {
     const getCategoryAPI = 'https://yshuynh.pythonanywhere.com/api/categories';
     axios
@@ -48,7 +46,7 @@ const Header = () => {
             <i class="fas fa-laptop"></i>TECHSTORE
           </div>
           <div className={styles.info}>
-            <div onClick={showModal} className={styles.search}>
+            <div onClick={toggleModal} className={styles.search}>
               <i className="fas fa-search"></i>
             </div>
             <div className={styles.acc}>
