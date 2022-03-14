@@ -123,7 +123,7 @@
 }
 @media (min-width: 1368px) and (max-width: 1600px) {
   .parent {
-    width: 507px;
-    height: 426px;
+    width: 95%;
+    /* height: 426px; */
   }
 }
