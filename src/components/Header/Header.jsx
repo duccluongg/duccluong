@@ -17,6 +17,7 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getCategoryApi());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSearch = (e) => {
