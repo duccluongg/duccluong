@@ -228,6 +228,14 @@
   align-items: center;
   background-color: #fff;
 }
+.Loading {
+  display: flex;
+  flex-direction: column;
+  margin-top: 170px;
+  width: 100%;
+  align-items: center;
+  background-color: #fff;
+}
 .brand {
   position: relative;
   left: 20px;

@@ -15,6 +15,7 @@ const Selection3 = () => {
 
   useEffect(() => {
     dispatch(getProductByCategory({ categoryId: 3, type: 'section_2' }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
