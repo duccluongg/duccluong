@@ -4,14 +4,21 @@ import axios from 'axios';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategoryApi } from '../../utils/CategorySlice';
 
 const Header = () => {
   const history = useHistory();
-  const [category, setCategory] = useState([]);
+  const category = useSelector((s) => s.category.list) || [];
+  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const [searchList, setSearchList] = useState([]);
   const toggleModal = () => setModal(!modal);
-  
+
+  useEffect(() => {
+    dispatch(getCategoryApi());
+  }, []);
+
   const handleSearch = (e) => {
     const temp = e.target.value;
     if (temp === '') {
@@ -23,19 +30,6 @@ const Header = () => {
       });
     }
   };
-    
-  useEffect(() => {
-    const getCategoryAPI = 'https://yshuynh.pythonanywhere.com/api/categories';
-    axios
-      .get(getCategoryAPI)
-      .then((res) => {
-        setCategory(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-        alert('Xảy ra lỗi');
-      });
-  }, []);
 
   return (
     <React.Fragment>
@@ -43,7 +37,7 @@ const Header = () => {
         <div className={styles.container}>
           <div className={styles.nameShop}>
             {' '}
-            <i class="fas fa-laptop"></i>TECHSTORE
+            <i className="fas fa-laptop"></i>TECHSTORE
           </div>
           <div className={styles.info}>
             <div onClick={toggleModal} className={styles.search}>

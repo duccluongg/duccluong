@@ -25,7 +25,7 @@ const Selection2 = () => {
         </div>
         <div className={styles.wrapper}>
           {dataImg.map((item, index) => (
-            <div className={styles.box}>
+            <div key={index} className={styles.box}>
               <div className={styles.parent}>
                 <div className={styles.modal}></div>
                 <img src={item} className={styles.child} alt={item} />

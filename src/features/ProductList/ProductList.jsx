@@ -10,36 +10,31 @@ import { useLocation, useParams } from 'react-router';
 import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategoryApi } from '../../utils/CategorySlice';
 
 const ProductList = () => {
   const history = useHistory();
   const { id } = useParams();
   const { search } = useLocation();
+  const dispatch = useDispatch();
+  const category = useSelector((s) => s.category.list) || [];
   const query = new URLSearchParams(search);
   const [product, setProduct] = useState([]);
-  const [category, setCategory] = useState([]);
   const [filters, setFilters] = useState({
     page_size: 12,
     page: 1,
   });
-  
   const [pagination, setPagination] = useState({
     page: 1,
     page_size: 12,
     totalRows: 11,
   });
-  
+
   useEffect(() => {
-    const getCategoryAPI = 'https://yshuynh.pythonanywhere.com/api/categories';
-    axios
-      .get(getCategoryAPI)
-      .then((res) => {
-        setCategory(res.data);
-      })
-      .catch((err) => {
-        alert('Xảy ra lỗi');
-      });
+    dispatch(getCategoryApi());
   }, []);
+
   useEffect(() => {
     const param = queryString.stringify(filters);
     const brandId = query.get('brand');
@@ -57,6 +52,7 @@ const ProductList = () => {
         alert('Xảy ra lỗi');
       });
   }, [id, filters]);
+
   const handlePageChange = (newPage) => {
     setFilters({
       ...filters,
@@ -67,6 +63,7 @@ const ProductList = () => {
       search: queryString.stringify(filters),
     });
   };
+
   return (
     <div>
       <Header />

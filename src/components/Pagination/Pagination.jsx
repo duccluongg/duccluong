@@ -38,7 +38,7 @@ Pagination.propTypes = {
   pagination: PropTypes.shape({
     page: PropTypes.number.isRequired,
     page_size: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
+    //  total: PropTypes.number.isRequired,
   }),
   onPageChange: PropTypes.func,
 };

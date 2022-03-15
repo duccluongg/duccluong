@@ -4,16 +4,18 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductByCategory } from '../../../../utils/ProductSlice';
 import FormatCash from '../../../../utils/FormatCash';
+
 const Selection1 = () => {
-  const [product, setProduct] = useState([]);
+  const product = useSelector((s) => s.product.data.section_1.list) || [];
+  const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
   const history = useHistory();
+
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=3`;
-    axios.get(getApi).then((response) => {
-      setProduct(response.data.results);
-    });
+    dispatch(getProductByCategory({ categoryId: 1, type: 'section_1' }));
   }, []);
 
   useEffect(() => {
