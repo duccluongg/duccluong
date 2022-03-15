@@ -29,6 +29,7 @@ const ProductList = () => {
     page_size: 12,
     page: 1,
   });
+
   const [pagination, setPagination] = useState({
     page: 1,
     page_size: 12,
