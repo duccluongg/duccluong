@@ -6,7 +6,7 @@ import styles from './ProductList.module.css';
 import Header from '../../components/Header/Header';
 import SlideBar from './components/SlideBar/SlideBar';
 import Product from './components/Product/Product';
-import { useLocation, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import { useHistory } from 'react-router';
@@ -18,10 +18,8 @@ import ClipLoader from 'react-spinners/ClipLoader';
 const ProductList = () => {
   const history = useHistory();
   const { id } = useParams();
-  const { search } = useLocation();
   const dispatch = useDispatch();
   const category = useSelector((s) => s.category.list) || [];
-  const query = new URLSearchParams(search);
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [fullLoading, setFullLoading] = useState(false);
@@ -51,8 +49,8 @@ const ProductList = () => {
   useEffect(() => {
     setLoading(true);
     const param = queryString.stringify(filters);
-    const brandId = query.get('brand');
-    const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}&brands=${brandId}`;
+
+    const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}`;
     axios
       .get(getProductAPI)
       .then((res) => {

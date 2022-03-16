@@ -7,35 +7,68 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import ProductInfo from './components/ProductInfo/ProductInfo';
-import axios from 'axios';
 import { useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductDetail } from '../../utils/ProductSlice';
+import PulseLoader from 'react-spinners/PulseLoader';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const ProductDetail = () => {
-  const [product, setProduct] = useState({});
+  const product = useSelector((s) => s.product.dataDetail) || {};
   const { id } = useParams();
   const productImg = product?.images;
-  
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const [fullLoading, setFullLoading] = useState(false);
+
   useEffect(() => {
-    if (id) {
-      const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;
-      axios.get(getApi).then((response) => {
-        setProduct(response.data);
-      });
+    setLoading(true);
+    dispatch(getProductDetail(id));
+    if (product != {}) {
+      setLoading(false);
     }
-  }, [id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setFullLoading(true);
+    setTimeout(() => {
+      setFullLoading(false);
+    }, 1500);
+  }, []);
 
   return (
     <React.Fragment>
-      <Header />
-      <div className={styles.container}>
-        <div className={styles.col5}>
-          <SliderImg productImg={productImg} />
+      {fullLoading ? (
+        <div className={styles.sweetLoading}>
+          <ClipLoader loading={fullLoading} size={50} />
         </div>
-        <div className={styles.col51}>
-          <ProductInfo product={product} />
-        </div>
-      </div>
-      <Footer />
+      ) : (
+        <React.Fragment>
+          <Header />
+          <div className={styles.container}>
+            {loading ? (
+              <div className={styles.Loading}>
+                <PulseLoader loading={loading} size={10} />
+              </div>
+            ) : (
+              <div className={styles.col5}>
+                <SliderImg productImg={productImg} />
+              </div>
+            )}
+            {loading ? (
+              <div className={styles.Loading}>
+                <PulseLoader loading={loading} size={10} />
+              </div>
+            ) : (
+              <div className={styles.col51}>
+                <ProductInfo product={product} />
+              </div>
+            )}
+          </div>
+          <Footer />
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 };
