@@ -16,8 +16,6 @@ function App() {
     <div className="App">
       <Switch>
         <ScrollToTop>
-          <Route path="/Register" exact component={Register} />
-          <Route path="/Login" exact component={Login} />
           <Route path="/listOrder" exact component={ListOrder} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/Register" exact component={Register} />

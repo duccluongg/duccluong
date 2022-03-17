@@ -22,11 +22,7 @@ const ProductDetail = () => {
   const [fullLoading, setFullLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     dispatch(getProductDetail(id));
-    if (product != {}) {
-      setLoading(false);
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
