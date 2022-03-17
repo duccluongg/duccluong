@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './Selection4.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../../../utils/ProductSlice';
-import FormatCash from '../../../../constants/FormatCash';
+// import FormatCash from '../../../../constants/FormatCash';
 import { Link } from 'react-router-dom';
 const Selection4 = () => {
   const dispatch = useDispatch();
