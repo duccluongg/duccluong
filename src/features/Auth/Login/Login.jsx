@@ -23,7 +23,7 @@ const Login = () => {
         <div className={styles.col3}>
           <div className={styles.box}>
             <div className={styles.header}>
-              <i class="fas fa-laptop"></i>TechStore
+              <i className="fas fa-laptop"></i>TechStore
             </div>
             <div className={styles.title}>Login to build your dream</div>
             <ValidatorForm className={styles.FormControl}>
@@ -100,7 +100,7 @@ const Login = () => {
                   <i className="fab fa-facebook-f"></i>
                 </div>
                 <div className={styles.google}>
-                  <i class="fab fa-github"></i>
+                  <i className="fab fa-github"></i>
                 </div>
                 <div className={styles.twitter}>
                   <i className="fab fa-twitter"></i>

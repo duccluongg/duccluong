@@ -18,7 +18,7 @@ const Register = () => {
       <div className={styles.col3}>
         <div className={styles.box}>
           <div className={styles.header}>
-            <i class="fas fa-laptop"></i>TechStore
+            <i className="fas fa-laptop"></i>TechStore
           </div>
           <div className={styles.title}>Sign up for a great experience</div>
           <ValidatorForm className={styles.FormControl}>
