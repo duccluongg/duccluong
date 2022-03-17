@@ -5,10 +5,10 @@
 .col7 {
   width: 70%;
   background-image: url('https://www.fpshub.com/wp-content/uploads/2021/09/i9sqnszashn71-scaled.jpg');
-  height: 100vh; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
+  height: 100vh;
 }
 .col3 {
   width: 30%;
@@ -33,8 +33,7 @@
   font-weight: 600;
   margin-bottom: 30px;
 }
-.FormControl {
-}
+
 .textField label {
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
@@ -50,13 +49,20 @@
   margin-bottom: 12px;
 }
 .button button {
-  padding: 7px 30px;
+  padding: 10px 16px;
   background-color: #1cb662;
   /* border: 1px solid #333; */
   cursor: pointer;
   border: none;
   font-weight: 600;
   color: #fff;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  width: 100px;
+}
+.button button:hover {
+  background-color: #1b5e20;
+  transition: 0.1s;
 }
 .toRegister {
   margin-top: 20px;
@@ -97,4 +103,20 @@
 }
 .required {
   color: red;
+}
+@media (max-width: 1366px) {
+  .box {
+    padding: 40px 40px;
+  }
+  .col7 {
+    height: auto;
+  }
+}
+@media (min-width: 1366px) and (max-width: 1600px) {
+  .box {
+    padding: 40px 40px;
+  }
+  .col7 {
+    height: auto;
+  }
 }

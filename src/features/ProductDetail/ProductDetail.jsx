@@ -10,7 +10,6 @@ import ProductInfo from './components/ProductInfo/ProductInfo';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../utils/ProductSlice';
-import PulseLoader from 'react-spinners/PulseLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 const ProductDetail = () => {
@@ -18,7 +17,6 @@ const ProductDetail = () => {
   const { id } = useParams();
   const productImg = product?.images;
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
   const [fullLoading, setFullLoading] = useState(false);
 
   useEffect(() => {
@@ -43,24 +41,12 @@ const ProductDetail = () => {
         <React.Fragment>
           <Header />
           <div className={styles.container}>
-            {loading ? (
-              <div className={styles.Loading}>
-                <PulseLoader loading={loading} size={10} />
-              </div>
-            ) : (
-              <div className={styles.col5}>
-                <SliderImg productImg={productImg} />
-              </div>
-            )}
-            {loading ? (
-              <div className={styles.Loading}>
-                <PulseLoader loading={loading} size={10} />
-              </div>
-            ) : (
-              <div className={styles.col51}>
-                <ProductInfo product={product} />
-              </div>
-            )}
+            <div className={styles.col5}>
+              <SliderImg productImg={productImg} />
+            </div>
+            <div className={styles.col51}>
+              <ProductInfo product={product} />
+            </div>
           </div>
           <Footer />
         </React.Fragment>
