@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import './Cart.css';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getListCart } from './CartSlice';
+import FormatCash from '../../utils/FormatCash';
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector((s) => s.cart.list);
+  useEffect(() => {
+    dispatch(getListCart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(cart);
   return (
     <div>
       <Header />
@@ -22,25 +32,31 @@ const Cart = () => {
                 <h3 className="total">Total</h3>
               </div>
               <div className="cart-items">
-                <div className="cart-item">
-                  <div className="cart-product">
-                    <img
-                      src="https://lh3.googleusercontent.com/JmGqy-74I-nERJEkaxa-gMuyv6qtWgoH2xqutvqaxeLewRMkWovrDLXyB9zfYw_vaPveDcJyy2QLEey3se31"
-                      alt=""
-                    />
-                    <div className="boxName">
-                      <h3 className="itemName">ANDROID TIVI SONY FULL</h3>
-                      <button>Xóa</button>
+                {cart.map((item) => (
+                  <div key={item.id} className="cart-item">
+                    <div className="cart-product">
+                      <img src={item?.product.thumbnail} alt="" />
+                      <div className="boxName">
+                        <h3 className="itemName">{item?.product.name}</h3>
+                        <button>Xóa</button>
+                      </div>
+                    </div>
+                    <div className="cart-product-price">
+                      {FormatCash((item?.product.price).toString())} đ
+                    </div>
+                    <div className="cart-product-quantity">
+                      <button>-</button>
+                      <div className="count">{item?.count}</div>
+                      <button>+</button>
+                    </div>
+                    <div className="cart-product-total-price">
+                      {FormatCash(
+                        (item?.product.price * item?.count).toString()
+                      )}{' '}
+                      đ
                     </div>
                   </div>
-                  <div className="cart-product-price">10.000.000 đ</div>
-                  <div className="cart-product-quantity">
-                    <button>-</button>
-                    <div className="count">2</div>
-                    <button>+</button>
-                  </div>
-                  <div className="cart-product-total-price">10.000.000 đ</div>
-                </div>
+                ))}
               </div>
               <div className="cart-summary">
                 <button className="clear-btn">Xóa tất cả</button>

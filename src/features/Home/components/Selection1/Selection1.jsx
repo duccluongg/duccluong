@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Selection1.module.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductByCategory } from '../../../../utils/ProductSlice';
@@ -11,19 +10,11 @@ import FormatCash from '../../../../utils/FormatCash';
 const Selection1 = () => {
   const product = useSelector((s) => s.product.data.section_1.list) || [];
   const dispatch = useDispatch();
-  const [category, setCategory] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
     dispatch(getProductByCategory({ categoryId: 1, type: 'section_1' }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/3`;
-    axios.get(getApi).then((response) => {
-      setCategory(response.data);
-    });
   }, []);
 
   const click = () => {
@@ -33,7 +24,7 @@ const Selection1 = () => {
   return (
     <div className={styles.selection}>
       <div className={styles.header}>
-        <span className={styles.title}>{category.name}</span>
+        <span className={styles.title}>Laptop</span>
       </div>
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>

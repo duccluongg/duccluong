@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import styles from './Profile.module.css';
 import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { userInfor } from '../Auth/AuthSlice';
 
 const Profile = () => {
+  const user = useSelector((s) => s.auth.info) || {};
   const history = useHistory();
   const toAcc = () => history.push('/account');
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/listOrder');
-  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(userInfor());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <Header />
@@ -21,7 +29,7 @@ const Profile = () => {
               src="https://st2.depositphotos.com/2703645/11476/v/450/depositphotos_114764528-stock-illustration-man-avatar-character.jpg"
               className={styles.imgHeader}
             />
-            <div className={styles.nameHeader}>luong le</div>
+            <div className={styles.nameHeader}>{user.name}</div>
           </div>
           <div className={styles.list}>
             <div className={styles.item} onClick={toAcc}>
@@ -50,32 +58,28 @@ const Profile = () => {
                   alt="ava"
                   className={styles.imgDetail}
                 />
-                <div className={styles.boxName}>Luong le</div>
+                <div className={styles.boxName}>{user.name}</div>
               </div>
               <div className={styles.listDetails}>
                 <div className={styles.listItems}>
                   <div className={styles.itemDetails1}>Tên đăng nhập</div>
-                  <div className={styles.itemDetails2}>duccluong</div>
+                  <div className={styles.itemDetails2}>{user.username}</div>
                 </div>
                 <div className={styles.listItems}>
                   <div className={styles.itemDetails1}>Tên</div>
-                  <div className={styles.itemDetails2}>Lương lê</div>
+                  <div className={styles.itemDetails2}>{user.name}</div>
                 </div>
                 <div className={styles.listItems}>
                   <div className={styles.itemDetails1}>Email</div>
-                  <div className={styles.itemDetails2}>
-                    luongdang1999@gmail.com
-                  </div>
+                  <div className={styles.itemDetails2}>{user.email}</div>
                 </div>
                 <div className={styles.listItems}>
                   <div className={styles.itemDetails1}>Số điện thoại</div>
-                  <div className={styles.itemDetails2}>0964043693</div>
+                  <div className={styles.itemDetails2}>{user.phone}</div>
                 </div>
                 <div className={styles.listItems}>
                   <div className={styles.itemDetails1}>Địa chỉ</div>
-                  <div className={styles.itemDetails2}>
-                    383 nguyen luong bang
-                  </div>
+                  <div className={styles.itemDetails2}>{user.address}</div>
                 </div>
               </div>
             </div>

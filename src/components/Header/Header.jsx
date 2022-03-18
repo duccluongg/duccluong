@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategoryApi } from '../../utils/CategorySlice';
+import { userInfor } from '../../features/Auth/AuthSlice';
+import storageUser from '../../constants/storageUser';
 
 const Header = () => {
+  const user = useSelector((s) => s.auth.info);
   const history = useHistory();
   const category = useSelector((s) => s.category.list) || [];
   const dispatch = useDispatch();
@@ -17,6 +20,11 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getCategoryApi());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    dispatch(userInfor());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -32,6 +40,10 @@ const Header = () => {
     }
   };
 
+  const logout = () => {
+    sessionStorage.removeItem(storageUser.TOKEN);
+  };
+
   return (
     <React.Fragment>
       <div className={styles.Header}>
@@ -44,23 +56,38 @@ const Header = () => {
             <div onClick={toggleModal} className={styles.search}>
               <i className="fas fa-search"></i>
             </div>
-            <div className={styles.acc}>
-              Tài khoản
-              <ul className={styles.notifyList}>
-                <div
-                  onClick={() => history.push('/login')}
-                  className={styles.notifyItem}
-                >
-                  Đăng nhập
-                </div>
-                <div
-                  onClick={() => history.push('/register')}
-                  className={styles.notifyItem}
-                >
-                  Đăng ký
-                </div>
-              </ul>
-            </div>
+            {user?.id ? (
+              <div className={styles.acc}>
+                {user.name}
+                <ul className={styles.notifyList}>
+                  <Link to="/profile" className={styles.notifyItem}>
+                    Thông tin cá nhân
+                  </Link>
+                  <Link to="/listorder" className={styles.notifyItem}>
+                    Lịch sử đơn hàng
+                  </Link>
+                  <Link
+                    to="/Login"
+                    onClick={logout}
+                    className={styles.notifyItem}
+                  >
+                    Đăng xuất
+                  </Link>
+                </ul>
+              </div>
+            ) : (
+              <div className={styles.acc}>
+                Tài khoản
+                <ul className={styles.notifyList}>
+                  <Link to="/login" className={styles.notifyItem}>
+                    Đăng nhập
+                  </Link>
+                  <Link to="/register" className={styles.notifyItem}>
+                    Đăng ký
+                  </Link>
+                </ul>
+              </div>
+            )}
             <Link to="/cart" className={styles.cart}>
               Giỏ hàng
               <i className="fas fa-shopping-cart">

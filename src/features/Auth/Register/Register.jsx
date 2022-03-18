@@ -84,12 +84,12 @@ const Register = () => {
             <ValidatorForm onSubmit={onSubmit} className={styles.FormControl}>
               <div className={styles.boxText}>
                 <div className={styles.name}>
-                  Username <span className={styles.required}>*</span>
+                  Tài khoản <span className={styles.required}>*</span>
                 </div>
                 <TextValidator
                   fullWidth
                   type="text"
-                  label="Username"
+                  label="Tài khoản"
                   variant="filled"
                   name="username"
                   autoComplete="off"
@@ -101,13 +101,13 @@ const Register = () => {
               </div>
               <div className={styles.boxText}>
                 <div className={styles.name}>
-                  Password <span className={styles.required}>*</span>
+                  Mật khẩu <span className={styles.required}>*</span>
                 </div>
                 <TextValidator
                   fullWidth
                   autoComplete="current-password"
                   type={showPassword ? 'text' : 'password'}
-                  label="Password"
+                  label="Mật khẩu"
                   variant="filled"
                   name="password"
                   onChange={handleChangePass}
@@ -157,12 +157,12 @@ const Register = () => {
               </div>
               <div className={styles.boxText}>
                 <div className={styles.name}>
-                  Name <span className={styles.required}>*</span>
+                  Tên <span className={styles.required}>*</span>
                 </div>
                 <TextValidator
                   fullWidth
                   type="Text"
-                  label="Name"
+                  label="Tên"
                   name="name"
                   variant="filled"
                   autoComplete="off"
@@ -176,12 +176,12 @@ const Register = () => {
               </div>
               <div className={styles.boxText}>
                 <div className={styles.name}>
-                  Address <span className={styles.required}>*</span>
+                  Địa chỉ <span className={styles.required}>*</span>
                 </div>
                 <TextValidator
                   fullWidth
                   type="Text"
-                  label="Address"
+                  label="Địa chỉ"
                   variant="filled"
                   name="address"
                   autoComplete="off"
@@ -195,13 +195,13 @@ const Register = () => {
               </div>
               <div className={styles.boxText}>
                 <div className={styles.name}>
-                  Phone <span className={styles.required}>*</span>
+                  Số điện thoại <span className={styles.required}>*</span>
                 </div>
                 <TextValidator
                   fullWidth
                   type="Text"
                   variant="filled"
-                  label="Phone"
+                  label="Số điện thoại"
                   name="phone"
                   autoComplete="off"
                   onChange={handleChangePhone}
@@ -213,12 +213,12 @@ const Register = () => {
                 />
               </div>
               <div className={styles.button}>
-                <button>Sign in</button>
+                <button>Đăng ký</button>
               </div>
             </ValidatorForm>
             <div className={styles.toRegister}>
-              Already have Account?{' '}
-              <span onClick={() => history.push('/login')}>Login Here</span>
+              Bạn đã có tài khoản? Đăng nhập{' '}
+              <span onClick={() => history.push('/login')}> tại đây</span>
             </div>
             <div className={styles.contact}>
               <div className={styles.subTitle}>Contact us at</div>

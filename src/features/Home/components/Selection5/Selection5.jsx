@@ -1,28 +1,19 @@
 import React from 'react';
 import styles from './Selection5.module.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductByCategory } from '../../../../utils/ProductSlice';
 import { useHistory } from 'react-router';
 
 const Selection5 = () => {
   const product = useSelector((s) => s.product.data.section_3.list) || [];
-  const [category, setCategory] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductByCategory({ categoryId: 4, type: 'section_3' }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/4`;
-    axios.get(getApi).then((response) => {
-      setCategory(response.data);
-    });
   }, []);
 
   const click = () => {
@@ -32,12 +23,12 @@ const Selection5 = () => {
   return (
     <div className={styles.selection}>
       <div className={styles.header}>
-        <span className={styles.title}>{category.name}</span>
+        <span className={styles.title}>Màn hình</span>
       </div>
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>
           <div className={styles.grid__row}>
-            {product.slice(0, 4).map((item) => (
+            {product?.slice(0, 4).map((item) => (
               <Link
                 to={`/productDetail/${item.id}`}
                 key={item.id}
