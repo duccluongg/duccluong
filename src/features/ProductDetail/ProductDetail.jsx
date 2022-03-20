@@ -45,7 +45,7 @@ const ProductDetail = () => {
               <SliderImg productImg={productImg} />
             </div>
             <div className={styles.col51}>
-              <ProductInfo product={product} />
+              <ProductInfo id={id} product={product} />
             </div>
           </div>
           <Footer />

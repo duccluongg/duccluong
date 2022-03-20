@@ -14,6 +14,7 @@ const Header = () => {
   const history = useHistory();
   const category = useSelector((s) => s.category.list) || [];
   const dispatch = useDispatch();
+  const cart = useSelector((s) => s.cart.quantity) || 0;
   const [modal, setModal] = useState(false);
   const [searchList, setSearchList] = useState([]);
   const toggleModal = () => setModal(!modal);
@@ -91,7 +92,7 @@ const Header = () => {
             <Link to="/cart" className={styles.cart}>
               Giỏ hàng
               <i className="fas fa-shopping-cart">
-                <span>1</span>
+                <span>{cart}</span>
               </i>
             </Link>
           </div>
