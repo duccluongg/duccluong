@@ -24,7 +24,7 @@ const InfoCheckOut = () => {
         </div>
         <div className={styles.listItems}>
           <div className={styles.itemDetails1}>Số điện thoại</div>
-          <div className={styles.itemDetails2}>{user.phone}</div>
+          <div className={styles.itemDetails2}>{user.phone_number}</div>
         </div>
         <div className={styles.listItems}>
           <div className={styles.itemDetails1}>Địa chỉ</div>

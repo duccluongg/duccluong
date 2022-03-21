@@ -5,6 +5,7 @@ const productDetailUrl = '/products';
 const categoryUrl = '/categories';
 const userUrl = '/user/me';
 const cartUrl = '/user/carts';
+const orderUrl = '/user/orders';
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   loginUrl,
@@ -14,4 +15,5 @@ export default {
   categoryUrl,
   userUrl,
   cartUrl,
+  orderUrl,
 };
