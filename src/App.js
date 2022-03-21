@@ -10,12 +10,14 @@ import ListOrder from './features/ListOrder/ListOrder';
 import Cart from './features/Cart/Cart';
 import CheckOut from './features/CheckOut/CheckOut';
 import ScrollToTop from './constants/ScrollToTop';
+import DetailOrder from './features/ListOrder/components/DetailOrder';
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <ScrollToTop>
+          <Route path="/detailOrder" exact component={DetailOrder} />
           <Route path="/listOrder" exact component={ListOrder} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/Register" exact component={Register} />

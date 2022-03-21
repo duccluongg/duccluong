@@ -27,14 +27,13 @@ export const userRegister = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      console.log(userName, email, passWord, address, name, phone);
       const response = await userApi.userRegister({
         username: userName,
         email: email,
         password: passWord,
         address: address,
         name: name,
-        phone: phone,
+        phone_number: phone,
       });
       return response.data;
     } catch (error) {

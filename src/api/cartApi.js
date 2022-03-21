@@ -44,10 +44,11 @@ function removeToCart(data) {
 }
 
 function deleteFromCart(data) {
-  return axiosClient.delete(`${URL.cartUrl}/${data}`, {
+  return axiosClient.delete(`${URL.cartUrl}`, {
     headers: {
       Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
+    data,
   });
 }
 // eslint-disable-next-line import/no-anonymous-default-export

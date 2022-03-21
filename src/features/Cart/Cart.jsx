@@ -5,6 +5,8 @@ import './Cart.css';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
+import FormatCash from '../../utils/FormatCash';
+import { useHistory } from 'react-router-dom';
 import {
   getListCart,
   IncrToCart,
@@ -13,10 +15,10 @@ import {
   deleteListCart,
   clearState,
 } from './CartSlice';
-import FormatCash from '../../utils/FormatCash';
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const cart = useSelector((s) => s.cart.list);
   const user = useSelector((s) => s.auth.info);
   const cartId = cart.map((item) => item.id);
@@ -30,6 +32,10 @@ const Cart = () => {
       setFullLoading(false);
     }, 1500);
   }, []);
+
+  const toCheckOut = () => {
+    history.push('/checkout');
+  };
 
   const onIncrToCart = (data) => {
     dispatch(IncrToCart(data));
@@ -63,6 +69,13 @@ const Cart = () => {
     dispatch(getListCart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  useEffect(() => {
+    setFullLoading(true);
+    setTimeout(() => {
+      setFullLoading(false);
+    }, 1500);
+  }, []);
 
   return (
     <div>
@@ -115,13 +128,13 @@ const Cart = () => {
                         <h3 className="total">Total</h3>
                       </div>
                       <div className="cart-items">
-                        {cart?.map((item) => (
+                        {cart.map((item) => (
                           <div key={item.id} className="cart-item">
                             <div className="cart-product">
-                              <img src={item?.product.thumbnail} alt="" />
+                              <img src={item.product?.thumbnail} alt="" />
                               <div className="boxName">
                                 <h3 className="itemName">
-                                  {item?.product.name}
+                                  {item.product?.name}
                                 </h3>
                                 <button
                                   onClick={() => onDeleteFromCart(item?.id)}
@@ -131,7 +144,7 @@ const Cart = () => {
                               </div>
                             </div>
                             <div className="cart-product-price">
-                              {FormatCash((item?.product.price).toString())} đ
+                              {FormatCash((item.product?.price).toString())} đ
                             </div>
                             <div className="cart-product-quantity">
                               <button onClick={() => onRemoveToCart(item)}>
@@ -144,7 +157,7 @@ const Cart = () => {
                             </div>
                             <div className="cart-product-total-price">
                               {FormatCash(
-                                (item?.product.price * item?.count).toString()
+                                (item.product?.price * item.count).toString()
                               )}{' '}
                               đ
                             </div>
@@ -166,7 +179,9 @@ const Cart = () => {
                             </span>
                           </div>
                           <div className="btn">
-                            <button className="button">Thanh toán ngay</button>
+                            <button onClick={toCheckOut} className="button">
+                              Thanh toán ngay
+                            </button>
                           </div>
                           <div className="continue-shopping">
                             <Link to="/">
