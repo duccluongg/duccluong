@@ -7,7 +7,7 @@ function Footer(props) {
       <div className={styles.grid}>
         <div className={styles.grid__row}>
           <div className={styles.grid__column24}>
-            <h3 className={styles.footer__heading}>Multishop</h3>
+            <h3 className={styles.footer__heading}>TechStore</h3>
             <ul className={styles.footer__list}>
               <li className={styles.footer__items}>
                 <i className="fas fa-map-marker-alt"></i>
