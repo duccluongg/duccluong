@@ -8,7 +8,7 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  height: 100vh;
+  height: fit-content;
 }
 .col3 {
   width: 30%;
@@ -109,7 +109,7 @@
     padding: 40px 40px;
   }
   .col7 {
-    height: auto;
+    height: fit-content;
   }
 }
 @media (min-width: 1366px) and (max-width: 1600px) {
@@ -117,6 +117,6 @@
     padding: 40px 40px;
   }
   .col7 {
-    height: auto;
+    height: 120vh;
   }
 }

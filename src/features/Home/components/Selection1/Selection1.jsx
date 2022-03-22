@@ -18,7 +18,7 @@ const Selection1 = () => {
   }, []);
 
   const click = () => {
-    history.push(`/productList/7`);
+    history.push(`/productList/1`);
   };
 
   return (

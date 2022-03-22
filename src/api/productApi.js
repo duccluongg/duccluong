@@ -10,5 +10,14 @@ function getProductAPi(data) {
 function getProductDetail(data) {
   return axiosClient.get(URL.productDetailUrl + `/${data}`);
 }
+
+function getProductRelated(data) {
+  return axiosClient.get(URL.productUrl + `=${data}`);
+}
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getProductAPi, getAllProduct, getProductDetail };
+export default {
+  getProductAPi,
+  getAllProduct,
+  getProductDetail,
+  getProductRelated,
+};

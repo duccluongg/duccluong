@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import styles from './Selection4.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../../../utils/ProductSlice';
-// import FormatCash from '../../../../constants/FormatCash';
 import { Link } from 'react-router-dom';
+import FormatCash from '../../../../utils/FormatCash';
 const Selection4 = () => {
   const dispatch = useDispatch();
   const product = useSelector((s) => s.product.dataDetail);
@@ -27,7 +27,7 @@ const Selection4 = () => {
           <img className="img" src={product.thumbnail} alt="First slide" />
           <div className={styles.name}>{product.name}</div>
           <div className={styles.price}>
-            {/* {FormatCash(product?.sale_price.toString())} đ */}
+            {/* {FormatCash((product?.sale_price).toString())} đ */}
           </div>
           <div className={styles.btn}>
             <Link to="/productDetail/19050026" className={styles.button}>

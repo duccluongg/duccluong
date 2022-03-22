@@ -1,0 +1,79 @@
+.container {
+  width: 70%;
+  margin: auto;
+  margin: 75px auto 0px auto;
+}
+.form {
+  width: 96%;
+}
+.btn {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 10px 15px;
+}
+/* .btn:hover {
+  background-color: #333;
+  color: #fff;
+} */
+textarea {
+  margin: 10px 12px 10px;
+  border: none;
+  outline: none;
+  resize: none;
+  background-color: #f7f7f7;
+}
+.textAreaStyle {
+  width: auto;
+  height: auto;
+  border-bottom: 1px solid rgb(118, 118, 118);
+  border-radius: 2px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  margin-bottom: 15px;
+}
+.commentTitle {
+  color: rgb(66, 69, 97);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+.listComment {
+  margin-top: 60px;
+}
+.comment {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+.img {
+  width: 3%;
+  margin-right: 0.625rem;
+}
+.img img {
+  width: 100%;
+  border-radius: 50%;
+}
+.name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dayComment {
+  font-size: 11px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+.content {
+  font-size: 15px;
+  font-weight: 600;
+}
+.star {
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+.sweetLoading {
+  margin-top: 33px;
+  text-align: center;
+}

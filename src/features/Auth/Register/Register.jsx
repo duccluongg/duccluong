@@ -42,7 +42,6 @@ const Register = () => {
   const onSubmit = () => {
     dispatch(userRegister({ userName, passWord, email, name, address, phone }));
   };
-
   useEffect(() => {
     return () => {
       dispatch(clearState());
@@ -56,6 +55,12 @@ const Register = () => {
         showSnackbar({ type: SNACK_BAR_TYPE.ERROR, message: errorMessage })
       );
       dispatch(clearState());
+      setUserName('');
+      setPassWord('');
+      setEmail('');
+      setName('');
+      setAddress('');
+      setPhone('');
     }
     if (isSuccess) {
       dispatch(clearState());
@@ -97,6 +102,8 @@ const Register = () => {
                   value={userName}
                   onChange={handleChangeUserName}
                   className={styles.textField}
+                  validators={['required']}
+                  errorMessages={['Nhập tài khoản', 'Không được để trống']}
                 />
               </div>
               <div className={styles.boxText}>
@@ -114,11 +121,8 @@ const Register = () => {
                   value={passWord}
                   className={styles.textField}
                   size="small"
-                  validators={['required', 'minStringLength:2']}
-                  errorMessages={[
-                    'PassWord is required',
-                    'Must enter 8 characters',
-                  ]}
+                  validators={['required']}
+                  errorMessages={['Nhập mật khẩu', 'Mật khẩu ít nhất 8 chữ']}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -150,8 +154,8 @@ const Register = () => {
                   validators={['required', 'isEmail']}
                   className={styles.textField}
                   errorMessages={[
-                    'Nhập Email',
-                    'Email must be a valid email address',
+                    'Nhập email',
+                    'Email phải là địa chỉ email hợp lệ',
                   ]}
                 />
               </div>

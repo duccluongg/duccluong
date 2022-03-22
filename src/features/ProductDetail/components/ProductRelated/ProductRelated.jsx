@@ -1,35 +1,27 @@
-import React from 'react';
-import styles from './Selection5.module.css';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import styles from './ProductRelated.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductByCategory } from '../../../../utils/ProductSlice';
-import { useHistory } from 'react-router';
-import FormatCash from '../../../../utils/FormatCash';
 
-const Selection5 = () => {
-  const product = useSelector((s) => s.product.data.section_3.list) || [];
-  const history = useHistory();
+import { getProductRelated } from '../../../../utils/ProductSlice';
+import { Link } from 'react-router-dom';
+import FormatCash from '../../../../utils/FormatCash';
+const ProductRelated = ({ categoryId }) => {
+  const product = useSelector((s) => s.product.listData) || [];
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductByCategory({ categoryId: 4, type: 'section_3' }));
+    dispatch(getProductRelated(categoryId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const click = () => {
-    history.push(`/productList/4`);
-  };
-
   return (
     <div className={styles.selection}>
       <div className={styles.header}>
-        <span className={styles.title}>Màn hình</span>
+        <span className={styles.title}>Sản phẩm liên quan</span>
       </div>
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>
           <div className={styles.grid__row}>
-            {product?.slice(0, 4).map((item) => (
+            {product.slice(0, 4).map((item) => (
               <Link
                 to={`/productDetail/${item.id}`}
                 key={item.id}
@@ -57,13 +49,8 @@ const Selection5 = () => {
           </div>
         </div>
       </div>
-      <div className={styles.btn}>
-        <button onClick={click} className={styles.button}>
-          Xem tất cả sản phẩm
-        </button>
-      </div>
     </div>
   );
 };
 
-export default Selection5;
+export default ProductRelated;
