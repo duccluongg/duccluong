@@ -101,7 +101,10 @@ const ListOrder = () => {
                         <div className={styles.payment}>
                           {item.payment?.name}
                         </div>
-                        <div className={styles.details}>
+                        <div
+                          onClick={() => history.push(`detailOrder/${item.id}`)}
+                          className={styles.details}
+                        >
                           Xem chi tiết đơn hàng
                         </div>
                       </div>

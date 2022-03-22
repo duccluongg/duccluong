@@ -42,14 +42,27 @@ export const getListOrder = createAsyncThunk(
     }
   }
 );
+export const getDetailOrder = createAsyncThunk(
+  'getDetailOrder',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await orderApi.getDetailOrder(payload);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 const orderSlice = createSlice({
   name: 'order',
   initialState: {
     list: [],
-    // quantity: 0,
     status: '',
     errorMessage: '',
+    detail: {},
   },
   reducers: {
     clearState: (state) => {
@@ -67,7 +80,18 @@ const orderSlice = createSlice({
     },
     [getListOrder.rejected]: (state, { payload }) => {
       state.errorMessage = 'bị lỗi';
-      state.status = 'getListCart.rejected';
+      state.status = 'getListOrder.rejected';
+    },
+    [getDetailOrder.pending]: (state) => {
+      state.status = 'getDetailOrder.pending';
+    },
+    [getDetailOrder.fulfilled]: (state, { payload }) => {
+      state.detail = payload;
+      state.status = 'getDetailOrder.fullfilled';
+    },
+    [getDetailOrder.rejected]: (state, { payload }) => {
+      state.errorMessage = 'bị lỗi';
+      state.status = 'getDetailOrder.rejected';
     },
   },
 });

@@ -17,8 +17,16 @@ function getListOrder() {
     },
   });
 }
+function getDetailOrder(data) {
+  return axiosClient.get(URL.orderUrl + `/${data}`, {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+    },
+  });
+}
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   createOrder,
   getListOrder,
+  getDetailOrder,
 };
