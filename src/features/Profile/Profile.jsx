@@ -9,7 +9,7 @@ import { userInfor } from '../Auth/AuthSlice';
 const Profile = () => {
   const user = useSelector((s) => s.auth.info) || {};
   const history = useHistory();
-  const toAcc = () => history.push('/account');
+  const toAcc = () => history.push('/profile');
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/listOrder');
   const dispatch = useDispatch();
