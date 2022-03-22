@@ -3,7 +3,7 @@ import storageUser from '../../constants/storageUser';
 import userApi from '../../api/userApi';
 
 export const userLogin = createAsyncThunk(
-  'user/login',
+  'userLogin',
   async (payload, { rejectWithValue }) => {
     try {
       const response = await userApi.userLogin(payload);
@@ -21,7 +21,7 @@ export const userLogin = createAsyncThunk(
 );
 
 export const userRegister = createAsyncThunk(
-  'user/register',
+  'userRegister',
   async (
     { userName, email, passWord, address, name, phone },
     { rejectWithValue }
@@ -44,10 +44,29 @@ export const userRegister = createAsyncThunk(
 );
 
 export const userInfor = createAsyncThunk(
-  'user/ user Infor',
+  'userInfor',
   async (payload, { rejectWithValue }) => {
     try {
       const response = await userApi.userInfor();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const changeInfor = createAsyncThunk(
+  'changeInfor',
+  async ({ name, email, address, phone }, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await userApi.changeInfor({
+        name: name,
+        email: email,
+        address: address,
+        phone_number: phone,
+      });
+      dispatch(userInfor());
       return response.data;
     } catch (error) {
       console.log(error);
@@ -113,6 +132,17 @@ const authSlice = createSlice({
     [userInfor.rejected]: (state, { payload }) => {
       state.errorMessage = 'bị lỗi';
       state.status = 'userInfor.rejected';
+    },
+
+    [changeInfor.pending]: (state) => {
+      state.status = 'changeInfor.pending';
+    },
+    [changeInfor.fulfilled]: (state, { payload }) => {
+      state.status = 'changeInfor.fullfilled';
+    },
+    [changeInfor.rejected]: (state, { payload }) => {
+      state.errorMessage = 'bị lỗi';
+      state.status = 'changeInfor.rejected';
     },
   },
 });
