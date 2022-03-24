@@ -14,7 +14,6 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
 import ProductRelated from './components/ProductRelated/ProductRelated';
 import Ratings from './components/Rating/Rating';
-import PulseLoader from 'react-spinners/PulseLoader';
 
 const ProductDetail = () => {
   const product = useSelector((s) => s.product.dataDetail) || {};

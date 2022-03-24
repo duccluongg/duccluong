@@ -220,19 +220,22 @@ const Register = () => {
                 <button>Đăng ký</button>
               </div>
             </ValidatorForm>
-            </div>
-            <div className={styles.contact}>
-              <div className={styles.subTitle}>Contact us at</div>
-              <div className={styles.icon}>
-                <div className={styles.facebook}>
-                  <i className="fab fa-facebook-f"></i>
-                </div>
-                <div className={styles.google}>
-                  <i className="fab fa-github"></i>
-                </div>
-                <div className={styles.twitter}>
-                  <i className="fab fa-twitter"></i>
-                </div>
+          </div>
+          <div className={styles.toRegister}>
+            Bạn đã có tài khoản? Đăng nhập{' '}
+            <span onClick={() => history.push('/login')}>tại đây</span>
+          </div>
+          <div className={styles.contact}>
+            <div className={styles.subTitle}>Contact us at</div>
+            <div className={styles.icon}>
+              <div className={styles.facebook}>
+                <i className="fab fa-facebook-f"></i>
+              </div>
+              <div className={styles.google}>
+                <i className="fab fa-github"></i>
+              </div>
+              <div className={styles.twitter}>
+                <i className="fab fa-twitter"></i>
               </div>
             </div>
           </div>

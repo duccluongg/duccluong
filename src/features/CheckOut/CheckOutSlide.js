@@ -47,7 +47,6 @@ export const getDetailOrder = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await orderApi.getDetailOrder(payload);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);

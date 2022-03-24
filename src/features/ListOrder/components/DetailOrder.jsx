@@ -13,7 +13,6 @@ const DetailOrder = () => {
   const dispatch = useDispatch();
   const id = useParams();
   const detail = useSelector((s) => s.order.detail) || {};
-  console.log(detail?.name);
   const user = useSelector((s) => s.auth.info);
   const toAcc = () => history.push('/account');
   const toCart = () => history.push('/cart');
