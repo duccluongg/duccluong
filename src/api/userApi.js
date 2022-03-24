@@ -1,9 +1,11 @@
 import axiosClient from './axiosClient';
 import URL from '../constants/api';
 import storageUser from '../constants/storageUser';
+
 function userLogin(data) {
   return axiosClient.post(URL.loginUrl, data);
 }
+
 function userRegister(data) {
   return axiosClient.post(URL.registerUrl, data);
 }
