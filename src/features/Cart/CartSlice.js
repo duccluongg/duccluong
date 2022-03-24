@@ -27,7 +27,7 @@ export const addToCart = createAsyncThunk(
       dispatch(
         showSnackbar({
           type: SNACK_BAR_TYPE.SUCCESS,
-          message: 'Thanh toán thành công',
+          message: 'Thêm vào giỏ hàng thành công',
         })
       );
       dispatch(getListCart());

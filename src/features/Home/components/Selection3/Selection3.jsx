@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductByCategory } from '../../../../utils/ProductSlice';
 import { useHistory } from 'react-router';
+import FormatCash from '../../../../utils/FormatCash';
 
 const Selection3 = () => {
   const product = useSelector((s) => s.product.data.section_2.list) || [];
@@ -16,7 +17,7 @@ const Selection3 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const click = () => {
-    history.push(`/productList/7`);
+    history.push(`/productList/3`);
   };
 
   return (
@@ -43,7 +44,7 @@ const Selection3 = () => {
                   <h4 className={styles.home__productitemsname}>{item.name}</h4>
                   <div className={styles.home__productprice}>
                     <span className={styles.home__productitemsprice}>
-                      {item.sale_price} đ
+                      {FormatCash(item.sale_price.toString())} đ
                     </span>
                     <div className={styles.btn_cart}>
                       <i className="fas fa-search"></i>

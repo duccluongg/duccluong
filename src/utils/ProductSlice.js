@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import productApi from '../api/productApi';
 
 export const getProductByCategory = createAsyncThunk(
-  'product/products by category',
+  'getProductByCategory',
   async (payload, { rejectWithValue }) => {
     const { categoryId, type } = payload;
     try {
@@ -18,7 +18,7 @@ export const getProductByCategory = createAsyncThunk(
   }
 );
 export const getProductDetail = createAsyncThunk(
-  'product/products detail',
+  'getProductDetail',
   async (payload, { rejectWithValue }) => {
     try {
       const response = await productApi.getProductDetail(payload);
@@ -31,7 +31,7 @@ export const getProductDetail = createAsyncThunk(
 );
 
 export const getAllProduct = createAsyncThunk(
-  'product/All Product',
+  'getAllProduct',
   async ({ rejectWithValue }) => {
     try {
       const response = await productApi.getAllProduct();
@@ -43,9 +43,23 @@ export const getAllProduct = createAsyncThunk(
   }
 );
 
+export const getProductRelated = createAsyncThunk(
+  'getProductRelated ',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await productApi.getProductRelated(payload);
+      return response.data.results;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const productSlice = createSlice({
   name: 'product',
   initialState: {
+    listData: [],
     dataDetail: {},
     data: {
       section_1: {
@@ -98,6 +112,18 @@ const productSlice = createSlice({
     },
     [getProductDetail.rejected]: (state, { payload }) => {
       state.status = 'getProductDetail.rejected';
+      state.errorMessage = 'bị lỗi';
+    },
+
+    [getProductRelated.pending]: (state) => {
+      state.status = 'getProductRelated.pending';
+    },
+    [getProductRelated.fulfilled]: (state, { payload }) => {
+      state.status = 'getProductRelated.fulfilled';
+      state.listData = payload;
+    },
+    [getProductRelated.rejected]: (state, { payload }) => {
+      state.status = 'getProductRelated.rejected';
       state.errorMessage = 'bị lỗi';
     },
   },

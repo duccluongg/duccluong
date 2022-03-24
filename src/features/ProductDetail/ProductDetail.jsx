@@ -12,19 +12,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../utils/ProductSlice';
 import PulseLoader from 'react-spinners/PulseLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
+import ProductRelated from './components/ProductRelated/ProductRelated';
+import Ratings from './components/Rating/Rating';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const ProductDetail = () => {
   const product = useSelector((s) => s.product.dataDetail) || {};
   const { id } = useParams();
   const productImg = product?.images;
+  const categoryId = product?.category?.id;
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [fullLoading, setFullLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getProductDetail(id));
+    setFullLoading(true);
+    setTimeout(() => {
+      setFullLoading(false);
+    }, 500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     setFullLoading(true);
@@ -62,6 +70,8 @@ const ProductDetail = () => {
               </div>
             )}
           </div>
+          <Ratings id={id} />
+          <ProductRelated categoryId={categoryId} />
           <Footer />
         </React.Fragment>
       )}
