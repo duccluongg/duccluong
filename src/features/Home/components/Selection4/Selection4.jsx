@@ -4,14 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../../../utils/ProductSlice';
 import { Link } from 'react-router-dom';
 import FormatCash from '../../../../utils/FormatCash';
+
 const Selection4 = () => {
   const dispatch = useDispatch();
   const product = useSelector((s) => s.product.dataDetail);
+
   useEffect(() => {
     dispatch(getProductDetail(19050026));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(product);
+
   return (
     <div className={styles.selection}>
       <div className={styles.box}>

@@ -10,11 +10,11 @@ import { userInfor } from '../../features/Auth/AuthSlice';
 import storageUser from '../../constants/storageUser';
 
 const Header = () => {
-  const user = useSelector((s) => s.auth.info) || {};
+  const user = useSelector((s) => s.auth.info);
   const history = useHistory();
   const category = useSelector((s) => s.category.list) || [];
   const dispatch = useDispatch();
-  const cart = useSelector((s) => s.cart.quantity);
+  const cart = useSelector((s) => s.cart.quantity) || 0;
   const [modal, setModal] = useState(false);
   const [searchList, setSearchList] = useState([]);
   const toggleModal = () => setModal(!modal);

@@ -10,6 +10,7 @@ import ProductInfo from './components/ProductInfo/ProductInfo';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../utils/ProductSlice';
+import PulseLoader from 'react-spinners/PulseLoader';
 import ClipLoader from 'react-spinners/ClipLoader';
 import ProductRelated from './components/ProductRelated/ProductRelated';
 import Ratings from './components/Rating/Rating';
@@ -21,6 +22,7 @@ const ProductDetail = () => {
   const productImg = product?.images;
   const categoryId = product?.category?.id;
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const [fullLoading, setFullLoading] = useState(false);
 
   useEffect(() => {
@@ -49,12 +51,24 @@ const ProductDetail = () => {
         <React.Fragment>
           <Header />
           <div className={styles.container}>
-            <div className={styles.col5}>
-              <SliderImg productImg={productImg} />
-            </div>
-            <div className={styles.col51}>
-              <ProductInfo id={id} product={product} />
-            </div>
+            {loading ? (
+              <div className={styles.Loading}>
+                <PulseLoader loading={loading} size={10} />
+              </div>
+            ) : (
+              <div className={styles.col5}>
+                <SliderImg productImg={productImg} />
+              </div>
+            )}
+            {loading ? (
+              <div className={styles.Loading}>
+                <PulseLoader loading={loading} size={10} />
+              </div>
+            ) : (
+              <div className={styles.col51}>
+                <ProductInfo product={product} />
+              </div>
+            )}
           </div>
           <Ratings id={id} />
           <ProductRelated categoryId={categoryId} />
