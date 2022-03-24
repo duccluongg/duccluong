@@ -225,6 +225,7 @@
   justify-content: center;
 }
 .needToLoginName {
+  margin-top: 30px;
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
@@ -233,7 +234,7 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 100vh;
   align-items: center;
   background-color: #fff;
 }

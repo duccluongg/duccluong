@@ -1,6 +1,14 @@
 import React from 'react';
 import styles from './Selection2.module.css';
+import { useHistory } from 'react-router-dom';
+
 const Selection2 = () => {
+  const history = useHistory();
+
+  const toProductList = () => {
+    history.push('./productList/1');
+  };
+
   const dataImg = [
     'https://i.pinimg.com/564x/bd/8f/4d/bd8f4df307db430521a7228c584c0feb.jpg',
     'https://i.pinimg.com/736x/2f/ad/74/2fad74a03b0362fc76b4da1d2b652f27.jpg',
@@ -31,7 +39,9 @@ const Selection2 = () => {
                 <img src={item} className={styles.child} alt={item} />
                 <div className={styles.content}>
                   <div className={styles.btn}>
-                    <button className={styles.button}>Shop Now</button>
+                    <button onClick={toProductList} className={styles.button}>
+                      Shop Now
+                    </button>
                   </div>
                 </div>
               </div>

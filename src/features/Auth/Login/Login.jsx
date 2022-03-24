@@ -69,7 +69,7 @@ const Login = () => {
                 <TextValidator
                   fullWidth
                   type="text"
-                  label="Username"
+                  label="Tài khoản"
                   variant="filled"
                   name="username"
                   autoComplete="off"
@@ -84,7 +84,7 @@ const Login = () => {
                   fullWidth
                   autoComplete="current-password"
                   type={showPassword ? 'text' : 'password'}
-                  label="Password"
+                  label="Mật khẩu"
                   variant="filled"
                   name="password"
                   onChange={handleChangePass}
@@ -123,11 +123,11 @@ const Login = () => {
               </div>
             </ValidatorForm>
             <div className={styles.toRegister}>
-              You don't have account?{' '}
-              <span onClick={() => history.push('/register')}>Sign Here</span>
+              Bạn không có tài khoản? Đăng kí{' '}
+              <span onClick={() => history.push('/register')}>Tại đây</span>
             </div>
             <div className={styles.contact}>
-              <div className={styles.subTitle}>Contact us at</div>
+              <div className={styles.subTitle}>Liên hệ tại</div>
               <div className={styles.icon}>
                 <div className={styles.facebook}>
                   <i className="fab fa-facebook-f"></i>

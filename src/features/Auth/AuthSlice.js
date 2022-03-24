@@ -19,6 +19,7 @@ export const userLogin = createAsyncThunk(
     }
   }
 );
+
 export const userRegister = createAsyncThunk(
   'user/register',
   async (
@@ -42,6 +43,20 @@ export const userRegister = createAsyncThunk(
     }
   }
 );
+
+export const userInfor = createAsyncThunk(
+  'user/ user Infor',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await userApi.userInfor();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -49,6 +64,7 @@ const authSlice = createSlice({
     isSuccess: false,
     isError: false,
     errorMessage: '',
+    info: {},
   },
   reducers: {
     clearState: (state) => {
@@ -85,6 +101,17 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.isError = true;
       state.errorMessage = 'Tài khoản đã tồn tại';
+    },
+    [userInfor.pending]: (state) => {
+      state.status = 'userInfor.pending';
+    },
+    [userInfor.fulfilled]: (state, { payload }) => {
+      state.info = payload;
+      state.status = 'userInfor.fullfilled';
+    },
+    [userInfor.rejected]: (state, { payload }) => {
+      state.errorMessage = 'bị lỗi';
+      state.status = 'userInfor.rejected';
     },
   },
 });
