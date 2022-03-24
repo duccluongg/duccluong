@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom';
 const Selection4 = () => {
   const dispatch = useDispatch();
   const product = useSelector((s) => s.product.dataDetail);
+
   useEffect(() => {
     dispatch(getProductDetail(19050026));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(product);
+
   return (
     <div className={styles.selection}>
       <div className={styles.box}>
