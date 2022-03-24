@@ -17,6 +17,18 @@ export const getProductByCategory = createAsyncThunk(
     }
   }
 );
+export const getProductDetail = createAsyncThunk(
+  'product/products detail',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await productApi.getProductDetail(payload);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const getAllProduct = createAsyncThunk(
   'product/All Product',
@@ -34,6 +46,7 @@ export const getAllProduct = createAsyncThunk(
 const productSlice = createSlice({
   name: 'product',
   initialState: {
+    dataDetail: {},
     data: {
       section_1: {
         list: [],
@@ -74,6 +87,18 @@ const productSlice = createSlice({
       const { type } = payload;
       state.data[type].errorMessage = 'something went wrong';
       state.data[type].status = 'getProductCategory.rejected';
+    },
+
+    [getProductDetail.pending]: (state) => {
+      state.status = 'getProductDetail.pending';
+    },
+    [getProductDetail.fulfilled]: (state, { payload }) => {
+      state.status = 'getProductDetail.fulfilled';
+      state.dataDetail = payload;
+    },
+    [getProductDetail.rejected]: (state, { payload }) => {
+      state.status = 'getProductDetail.rejected';
+      state.errorMessage = 'bị lỗi';
     },
   },
 });

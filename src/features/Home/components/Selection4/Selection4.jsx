@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Selection4.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductDetail } from '../../../../utils/ProductSlice';
+import FormatCash from '../../../../constants/FormatCash';
+import { Link } from 'react-router-dom';
 const Selection4 = () => {
+  const dispatch = useDispatch();
+  const product = useSelector((s) => s.product.dataDetail);
+  useEffect(() => {
+    dispatch(getProductDetail(19050026));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(product);
   return (
     <div className={styles.selection}>
       <div className={styles.box}>
@@ -11,15 +22,18 @@ const Selection4 = () => {
           />
         </div>
         <div className={styles.box2}>
-          <div className={styles.header}>Top Trending</div>
+          <div className={styles.header}>Thiết Bị Thông Minh</div>
 
-          <img
-            className="d-block w-100"
-            src="https://cdn.shopify.com/s/files/1/0256/4594/0810/products/1_a5f6af0e-b13e-47bb-883f-bd586149cbad_360x.jpg?v=1614069709"
-            alt="First slide"
-          />
-          <div className={styles.name}>Faux suede biker jacket</div>
-          <div className={styles.price}>60.00$</div>
+          <img className="img" src={product.thumbnail} alt="First slide" />
+          <div className={styles.name}>{product.name}</div>
+          <div className={styles.price}>
+            {/* {FormatCash(product?.sale_price.toString())} đ */}
+          </div>
+          <div className={styles.btn}>
+            <Link to="/productDetail/19050026" className={styles.button}>
+              Xem chi tiết sản phẩm
+            </Link>
+          </div>
         </div>
       </div>
     </div>
