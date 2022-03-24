@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import styles from './Selection4.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../../../utils/ProductSlice';
+<<<<<<< HEAD
 // import FormatCash from '../../../../constants/FormatCash';
+=======
+import FormatCash from '../../../../constants/FormatCash';
+>>>>>>> 1785a062f922afe7b8389574a5b58cce167ec274
 import { Link } from 'react-router-dom';
 const Selection4 = () => {
   const dispatch = useDispatch();
