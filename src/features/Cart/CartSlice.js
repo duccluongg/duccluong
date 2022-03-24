@@ -4,7 +4,7 @@ import { showSnackbar } from '../../components/CustomSnackBar/snackBarSlide';
 import { SNACK_BAR_TYPE } from '../../constants/snackBarType';
 
 export const getListCart = createAsyncThunk(
-  'cart/ListCart',
+  'getListCart',
   async (payload, { rejectWithValue }) => {
     try {
       const response = await cartApi.getListCart();
@@ -17,7 +17,7 @@ export const getListCart = createAsyncThunk(
 );
 
 export const addToCart = createAsyncThunk(
-  'cart/ListCart',
+  'addToCart',
   async (payload, { rejectWithValue, dispatch }) => {
     try {
       const response = await cartApi.addToCart({
@@ -27,7 +27,7 @@ export const addToCart = createAsyncThunk(
       dispatch(
         showSnackbar({
           type: SNACK_BAR_TYPE.SUCCESS,
-          message: 'Thêm vào giỏ hàng thành công',
+          message: 'Thanh toán thành công',
         })
       );
       dispatch(getListCart());
@@ -40,7 +40,7 @@ export const addToCart = createAsyncThunk(
 );
 
 export const IncrToCart = createAsyncThunk(
-  'cart/addToCart',
+  'IncrToCart',
   async (payload, { rejectWithValue, dispatch }) => {
     try {
       const response = await cartApi.IncrToCart({
@@ -57,7 +57,7 @@ export const IncrToCart = createAsyncThunk(
 );
 
 export const removeToCart = createAsyncThunk(
-  'cart/RemoveToCart',
+  'removeToCart',
   async (payload, { rejectWithValue, dispatch }) => {
     try {
       const response = await cartApi.removeToCart({
@@ -74,7 +74,7 @@ export const removeToCart = createAsyncThunk(
 );
 
 export const deleteFromCart = createAsyncThunk(
-  'cart/ DeleteFromCart',
+  'deleteFromCart',
   async (payload, { rejectWithValue, dispatch }) => {
     try {
       const response = await cartApi.deleteFromCart(payload);
@@ -88,7 +88,7 @@ export const deleteFromCart = createAsyncThunk(
 );
 
 export const deleteListCart = createAsyncThunk(
-  'cart/ DeleteListCart',
+  'deleteListCart',
   async (payload, { rejectWithValue, dispatch }) => {
     try {
       const response = await cartApi.delListCart(payload);
@@ -113,6 +113,7 @@ const cartSlice = createSlice({
     clearState: (state) => {
       state.status = '';
       state.list = [];
+      state.quantity = 0;
       return state;
     },
   },
@@ -128,6 +129,19 @@ const cartSlice = createSlice({
     [getListCart.rejected]: (state, { payload }) => {
       state.errorMessage = 'bị lỗi';
       state.status = 'getListCart.rejected';
+    },
+
+    [deleteListCart.pending]: (state) => {
+      state.status = 'deleteListCart.pending';
+    },
+    [deleteListCart.fulfilled]: (state, { payload }) => {
+      state.list = [];
+      state.status = 'deleteListCart.fullfilled';
+      state.quantity = 0;
+    },
+    [deleteListCart.rejected]: (state, { payload }) => {
+      state.errorMessage = 'bị lỗi';
+      state.status = 'deleteListCart.rejected';
     },
   },
 });

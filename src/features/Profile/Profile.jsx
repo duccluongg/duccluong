@@ -9,7 +9,7 @@ import { userInfor } from '../Auth/AuthSlice';
 const Profile = () => {
   const user = useSelector((s) => s.auth.info) || {};
   const history = useHistory();
-  const toAcc = () => history.push('/account');
+  const toAcc = () => history.push('/profile');
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/listOrder');
   const dispatch = useDispatch();
@@ -75,7 +75,7 @@ const Profile = () => {
                 </div>
                 <div className={styles.listItems}>
                   <div className={styles.itemDetails1}>Số điện thoại</div>
-                  <div className={styles.itemDetails2}>{user.phone}</div>
+                  <div className={styles.itemDetails2}>{user.phone_number}</div>
                 </div>
                 <div className={styles.listItems}>
                   <div className={styles.itemDetails1}>Địa chỉ</div>
