@@ -17,5 +17,13 @@ function userInfor() {
     },
   });
 }
+
+function changeInfor(data) {
+  return axiosClient.put(URL.userUrl, data, {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+    },
+  });
+}
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { userLogin, userRegister, userInfor };
+export default { userLogin, userRegister, userInfor, changeInfor };

@@ -19,7 +19,7 @@ export const createOrder = createAsyncThunk(
       dispatch(
         showSnackbar({
           type: SNACK_BAR_TYPE.SUCCESS,
-          message: 'Thêm vào giỏ hàng thành công',
+          message: 'Đặt hàng thành công',
         })
       );
       return response.data;

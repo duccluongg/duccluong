@@ -60,12 +60,11 @@ const DetailOrder = () => {
             <div className={styles.infoPhone}>
               Điện thoại: <span>{detail?.phone_number}</span>
             </div>
-            {/* <div className={styles.infoPayment}>{detail.payment.name}</div> */}
           </div>
           <div className={styles.listItem}>
             <div className={styles.headerSub}>Đơn hàng số: {detail.id}</div>
             <div className={styles.listItems}>
-              {detail?.items.map((item) => (
+              {detail?.items?.map((item) => (
                 <div className={styles.item}>
                   <div className={styles.itemInfo}>
                     <img src={item.product.thumbnail} alt="" />

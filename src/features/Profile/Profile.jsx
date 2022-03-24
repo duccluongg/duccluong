@@ -1,18 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import styles from './Profile.module.css';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { userInfor } from '../Auth/AuthSlice';
+import UpdateProfle from './components/UpdateProfile/UpdateProfle';
+import PulseLoader from 'react-spinners/PulseLoader';
+import CustomSnackBar from '../../components/CustomSnackBar/CustomSnackBar';
 
 const Profile = () => {
+  const [loading, setLoading] = useState(false);
   const user = useSelector((s) => s.auth.info) || {};
   const history = useHistory();
   const toAcc = () => history.push('/profile');
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/listOrder');
   const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
+  const showModal = () => {
+    setModal(!modal);
+  };
+
+  const closeModal = () => {
+    setModal(!modal);
+  };
 
   useEffect(() => {
     dispatch(userInfor());
@@ -20,6 +32,7 @@ const Profile = () => {
   }, []);
   return (
     <div>
+      <CustomSnackBar />
       <Header />
       <div className={styles.container}>
         <div className={styles.col3}>
@@ -51,40 +64,58 @@ const Profile = () => {
             </div>
           </div>
           <div className={styles.infoDetail}>
-            <div className={styles.Detail}>
-              <div className={styles.boxImg}>
-                <img
-                  src="https://st2.depositphotos.com/2703645/11476/v/450/depositphotos_114764528-stock-illustration-man-avatar-character.jpg"
-                  alt="ava"
-                  className={styles.imgDetail}
-                />
-                <div className={styles.boxName}>{user.name}</div>
+            {loading ? (
+              <div className={styles.loading}>
+                <PulseLoader loading={loading} size={10} />
               </div>
-              <div className={styles.listDetails}>
-                <div className={styles.listItems}>
-                  <div className={styles.itemDetails1}>Tên đăng nhập</div>
-                  <div className={styles.itemDetails2}>{user.username}</div>
+            ) : (
+              <div className={styles.Detail}>
+                <div className={styles.boxImg}>
+                  <img
+                    src="https://st2.depositphotos.com/2703645/11476/v/450/depositphotos_114764528-stock-illustration-man-avatar-character.jpg"
+                    alt="ava"
+                    className={styles.imgDetail}
+                  />
+                  <div className={styles.boxName}>{user.name}</div>
                 </div>
-                <div className={styles.listItems}>
-                  <div className={styles.itemDetails1}>Tên</div>
-                  <div className={styles.itemDetails2}>{user.name}</div>
-                </div>
-                <div className={styles.listItems}>
-                  <div className={styles.itemDetails1}>Email</div>
-                  <div className={styles.itemDetails2}>{user.email}</div>
-                </div>
-                <div className={styles.listItems}>
-                  <div className={styles.itemDetails1}>Số điện thoại</div>
-                  <div className={styles.itemDetails2}>{user.phone_number}</div>
-                </div>
-                <div className={styles.listItems}>
-                  <div className={styles.itemDetails1}>Địa chỉ</div>
-                  <div className={styles.itemDetails2}>{user.address}</div>
+                <div className={styles.listDetails}>
+                  <div className={styles.listItems}>
+                    <div className={styles.itemDetails1}>Tên đăng nhập</div>
+                    <div className={styles.itemDetails2}>{user.username}</div>
+                  </div>
+                  <div className={styles.listItems}>
+                    <div className={styles.itemDetails1}>Tên</div>
+                    <div className={styles.itemDetails2}>{user.name}</div>
+                  </div>
+                  <div className={styles.listItems}>
+                    <div className={styles.itemDetails1}>Email</div>
+                    <div className={styles.itemDetails2}>{user.email}</div>
+                  </div>
+                  <div className={styles.listItems}>
+                    <div className={styles.itemDetails1}>Số điện thoại</div>
+                    <div className={styles.itemDetails2}>
+                      {user.phone_number}
+                    </div>
+                  </div>
+                  <div className={styles.listItems}>
+                    <div className={styles.itemDetails1}>Địa chỉ</div>
+                    <div className={styles.itemDetails2}>{user.address}</div>
+                  </div>
+                  <button className={styles.button} onClick={showModal}>
+                    Thay đổi thông tin
+                  </button>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
+        {modal && (
+          <div className={styles.modal}>
+            <div className={styles.overLay}>
+              <UpdateProfle closeModal={closeModal} setLoading={setLoading} />
+            </div>
+          </div>
+        )}
       </div>
       <Footer />
     </div>
