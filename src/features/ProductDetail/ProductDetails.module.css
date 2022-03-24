@@ -1,0 +1,32 @@
+.container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+}
+.col51 {
+  width: 50%;
+  padding: 100px 36px;
+}
+.col5 {
+  width: 50%;
+  margin-right: 50px;
+}
+.sweetLoading {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  background-color: #fff;
+}
+.Loading {
+  display: flex;
+  flex-direction: column;
+  margin-top: 170px;
+  width: 80%;
+  align-items: center;
+  background-color: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 50px;
+}
