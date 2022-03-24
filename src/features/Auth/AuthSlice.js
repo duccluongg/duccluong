@@ -88,7 +88,6 @@ const authSlice = createSlice({
       state.isError = true;
       state.errorMessage = 'Sai tên đăng nhập hoặc mật khẩu';
     },
-
     [userRegister.pending]: (state) => {
       state.isFetching = true;
       state.isSuccess = false;
@@ -102,7 +101,6 @@ const authSlice = createSlice({
       state.isError = true;
       state.errorMessage = 'Tài khoản đã tồn tại';
     },
-
     [userInfor.pending]: (state) => {
       state.status = 'userInfor.pending';
     },

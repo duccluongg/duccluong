@@ -5,6 +5,7 @@ import authReducer from '../features/Auth/AuthSlice';
 import snackbarReducer from '../components/CustomSnackBar/snackBarSlide';
 import cartReducer from '../features/Cart/CartSlice';
 import orderReducer from '../features/CheckOut/CheckOutSlide';
+
 const rootReducer = {
   product: productReducer,
   category: categoryReducer,
@@ -13,7 +14,9 @@ const rootReducer = {
   cart: cartReducer,
   order: orderReducer,
 };
+
 const store = configureStore({
   reducer: rootReducer,
 });
+
 export default store;
