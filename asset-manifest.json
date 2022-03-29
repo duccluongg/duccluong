@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "./static/css/main.f30c3118.css",
-    "main.js": "./static/js/main.e98e73b7.js",
-    "index.html": "./index.html",
-    "main.f30c3118.css.map": "./static/css/main.f30c3118.css.map",
-    "main.e98e73b7.js.map": "./static/js/main.e98e73b7.js.map"
+    "main.css": "/multishop1/static/css/main.f30c3118.css",
+    "main.js": "/multishop1/static/js/main.e98e73b7.js",
+    "index.html": "/multishop1/index.html",
+    "main.f30c3118.css.map": "/multishop1/static/css/main.f30c3118.css.map",
+    "main.e98e73b7.js.map": "/multishop1/static/js/main.e98e73b7.js.map"
   },
   "entrypoints": [
     "static/css/main.f30c3118.css",
