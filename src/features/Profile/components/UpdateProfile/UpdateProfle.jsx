@@ -22,9 +22,9 @@ const UpdateProfle = ({ closeModal, setLoading }) => {
     dispatch(changeInfor({ name, email, address, phone }));
     closeModal();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 500);
     dispatch(
       showSnackbar({
         type: SNACK_BAR_TYPE.success,

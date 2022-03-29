@@ -70,7 +70,7 @@ const Register = () => {
           message: 'đăng kí thành công',
         })
       );
-      setTimeout(() => history.push('/login'), 1000);
+      // setTimeout(() => history.push('/login'), 1000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError, isSuccess]);

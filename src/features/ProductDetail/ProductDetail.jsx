@@ -27,17 +27,17 @@ const ProductDetail = () => {
   useEffect(() => {
     dispatch(getProductDetail(id));
     setFullLoading(true);
-    setTimeout(() => {
-      setFullLoading(false);
-    }, 500);
+    // setTimeout(() => {
+    //   setFullLoading(false);
+    // }, 500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   useEffect(() => {
     setFullLoading(true);
-    setTimeout(() => {
-      setFullLoading(false);
-    }, 1500);
+    // setTimeout(() => {
+    //   setFullLoading(false);
+    // }, 1500);
   }, []);
 
   return (
