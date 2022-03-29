@@ -21,15 +21,15 @@ const Ratings = ({ id }) => {
     setText('');
     setStar(null);
     setLoading(true);
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   dispatch(
-    //     showSnackbar({
-    //       type: SNACK_BAR_TYPE.success,
-    //       message: 'Bình luận thành công',
-    //     })
-    //   );
-    // }, 1000);
+    setTimeout(() => {
+      setLoading(false);
+      dispatch(
+        showSnackbar({
+          type: SNACK_BAR_TYPE.success,
+          message: 'Bình luận thành công',
+        })
+      );
+    }, 1000);
   };
 
   useEffect(() => {

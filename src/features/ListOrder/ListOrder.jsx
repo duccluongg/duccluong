@@ -26,9 +26,9 @@ const ListOrder = () => {
 
   useEffect(() => {
     setFullLoading(true);
-    // setTimeout(() => {
-    //   setFullLoading(false);
-    // }, 1500);
+    setTimeout(() => {
+      setFullLoading(false);
+    }, 1500);
   }, []);
 
   const switchCase = (props) => {

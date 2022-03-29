@@ -41,9 +41,9 @@ const ProductList = () => {
 
   useEffect(() => {
     setFullLoading(true);
-    // setTimeout(() => {
-    //   setFullLoading(false);
-    // }, 1500);
+    setTimeout(() => {
+      setFullLoading(false);
+    }, 1500);
   }, []);
 
   useEffect(() => {
