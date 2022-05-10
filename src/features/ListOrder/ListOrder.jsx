@@ -14,11 +14,10 @@ const ListOrder = () => {
   const toAcc = () => history.push('/profile');
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/listOrder');
-  const order = useSelector((s) => s.order.list);
+  const order = useSelector((s) => s.order.list) || [];
   const user = useSelector((s) => s.auth.info);
   const [fullLoading, setFullLoading] = useState(false);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getListOrder());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,63 +79,70 @@ const ListOrder = () => {
               </div>
             </div>
             <div className={styles.col7}>
-              {order.map((item) => (
-                <div key={item.id} className={styles.itemOrder}>
-                  <div className={styles.row1}>
-                    <div className={styles.brandName}>Multishop</div>
-                    <div className={styles.status}>
-                      {switchCase(item.status)}
-                    </div>
-                  </div>
-                  <div className={styles.row2}>
-                    <div className={styles.left}>
-                      <div className={styles.info}>
-                        <div className={styles.idCard}>
-                          Đơn hàng số: {item.id}
-                        </div>
-                        <div className={styles.itemName}>{item.name}</div>
-                        <div className={styles.phoneUser}>
-                          {item.phone_number}
-                        </div>
-                        <div className={styles.payment}>
-                          {item.payment?.name}
-                        </div>
-                        <div
-                          onClick={() => history.push(`detailOrder/${item.id}`)}
-                          className={styles.details}
-                        >
-                          Xem chi tiết đơn hàng
-                        </div>
-                      </div>
-                      <div className={styles.listImg}>
-                        {item.items.map((items) => (
-                          <img
-                            key={items.id}
-                            src={items.product.thumbnail}
-                            alt=""
-                          />
-                        ))}
+              {order
+                .slice()
+                .reverse()
+                .map((item) => (
+                  <div key={item.id} className={styles.itemOrder}>
+                    <div className={styles.row1}>
+                      <div className={styles.brandName}>Multishop</div>
+                      <div className={styles.status}>
+                        {switchCase(item.status)}
                       </div>
                     </div>
-                    <div className={styles.priceBox}>
-                      <div className={styles.price}>
-                        {FormatCash(item.sum_price.toString())} đ
+                    <div className={styles.row2}>
+                      <div className={styles.left}>
+                        <div className={styles.info}>
+                          <div className={styles.idCard}>
+                            Đơn hàng số: {item.id}
+                          </div>
+                          <div className={styles.itemName}>{item.name}</div>
+                          <div className={styles.phoneUser}>
+                            {item.phone_number}
+                          </div>
+                          <div className={styles.payment}>
+                            {item.payment?.name}
+                          </div>
+                          <div
+                            onClick={() =>
+                              history.push(`detailOrder/${item.id}`)
+                            }
+                            className={styles.details}
+                          >
+                            Xem chi tiết đơn hàng
+                          </div>
+                        </div>
+                        <div className={styles.listImg}>
+                          {item.items.map((items) => (
+                            <img
+                              key={items.id}
+                              src={items.product.thumbnail}
+                              alt=""
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className={styles.priceBox}>
+                        <div className={styles.price}>
+                          {FormatCash(item.sum_price.toString())} đ
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.row3}>
+                      <div className={styles.shipping}>
+                        {' '}
+                        Phí ship:{' '}
+                        <span>
+                          {FormatCash(item.shipping_fee.toString())} đ
+                        </span>
+                      </div>
+                      <div className={styles.totalPrice}>
+                        Tổng số tiền:{' '}
+                        <span>{FormatCash(item.total_cost.toString())} đ</span>
                       </div>
                     </div>
                   </div>
-                  <div className={styles.row3}>
-                    <div className={styles.shipping}>
-                      {' '}
-                      Phí ship:{' '}
-                      <span>{FormatCash(item.shipping_fee.toString())} đ</span>
-                    </div>
-                    <div className={styles.totalPrice}>
-                      Tổng số tiền:{' '}
-                      <span>{FormatCash(item.total_cost.toString())} đ</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
           <Footer />

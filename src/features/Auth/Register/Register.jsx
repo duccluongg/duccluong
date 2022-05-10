@@ -74,10 +74,13 @@ const Register = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError, isSuccess]);
+  const img = require('../../../assets/register.jpg');
 
   return (
     <div className={styles.container}>
-      <div className={styles.col7}></div>
+      <div className={styles.col7}>
+        <img src={img} alt="" />
+      </div>
       <CustomSnackBar />
       <Grow in timeout={1500}>
         <div className={styles.col3}>

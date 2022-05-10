@@ -30,3 +30,16 @@
   padding-right: 5px;
   margin-left: 50px;
 }
+.col7 {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 60px;
+}
+.col3 {
+  width: 30%;
+  padding: 0px 60px;
+}
+.row {
+  padding: 80px 100px;
+}

@@ -13,12 +13,17 @@ const Selection1 = () => {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(getProductByCategory({ categoryId: 1, type: 'section_1' }));
+    dispatch(
+      getProductByCategory({
+        categoryId: '6266c2fdbdf59b178d0152f0',
+        type: 'section_1',
+      })
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const click = () => {
-    history.push(`/productList/1`);
+    history.push(`/productList/6266c2fdbdf59b178d0152f0`);
   };
 
   return (

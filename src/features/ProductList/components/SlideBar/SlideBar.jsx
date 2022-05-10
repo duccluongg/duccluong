@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../ProductList.module.css';
 import { useHistory } from 'react-router';
 import SlideItem from './components/SlideItem';
-const SlideBar = ({ category }) => {
+const SlideBar = ({ category = [] }) => {
   const history = useHistory();
   return (
     <div className={styles.category}>
@@ -20,7 +20,7 @@ const SlideBar = ({ category }) => {
                   {item.name}
                 </span>
 
-                <SlideItem icon={'fas fa-plus'}>
+                {/* <SlideItem icon={'fas fa-plus'}>
                   <div className={styles.brand}>
                     {item.brands.map((item1) => (
                       <div
@@ -36,7 +36,7 @@ const SlideBar = ({ category }) => {
                       </div>
                     ))}
                   </div>
-                </SlideItem>
+                </SlideItem> */}
               </div>
             </React.Fragment>
           ))}

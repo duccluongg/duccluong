@@ -7,12 +7,11 @@ export const userLogin = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await userApi.userLogin(payload);
-
       if (payload.remember)
         localStorage.setItem(storageUser.TOKEN, response.data.access_token);
       else
         sessionStorage.setItem(storageUser.TOKEN, response.data.access_token);
-      return response.data;
+      return response.access_token;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);

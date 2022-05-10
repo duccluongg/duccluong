@@ -13,7 +13,7 @@ function userRegister(data) {
 function userInfor() {
   return axiosClient.get(URL.userUrl, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
   });
 }
@@ -21,7 +21,7 @@ function userInfor() {
 function changeInfor(data) {
   return axiosClient.put(URL.userUrl, data, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
   });
 }

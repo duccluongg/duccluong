@@ -12,10 +12,10 @@ const Selection2 = () => {
   const dataImg = [
     'https://i.pinimg.com/564x/bd/8f/4d/bd8f4df307db430521a7228c584c0feb.jpg',
     'https://i.pinimg.com/736x/2f/ad/74/2fad74a03b0362fc76b4da1d2b652f27.jpg',
-    'https://photo2.tinhte.vn/data/attachment-files/2020/01/4892451_CDFEF439-5FCD-4B2C-ADBE-0866D172A2F2.jpeg',
+    'https://tmdpc.vn/media/news/0712_pc-gaming-gia-re.jpg',
     'https://www.hanoicomputer.vn/media/lib/17-09-2020/cauhinhmaytinhchigame2020.jpg',
     'https://i.pinimg.com/736x/18/27/75/1827759333e28fd130b701847796e372.jpg',
-    'https://hailongcomputer.vn/uploads/images/phong-cach-pc-nghe-si.jpg',
+    'https://i2.wp.com/www.theweddingvowsg.com/wp-content/uploads/2021/09/10-Best-Gaming-PC-in-Malaysia-2021.jpg?w=1000&ssl=1',
     'https://i.pinimg.com/originals/a4/a5/9d/a4a59dd3720921ad90b8aacaf0bfe368.jpg',
     'https://1.bp.blogspot.com/-wsFHUVRfODc/X7toIcrduhI/AAAAAAAAA_s/XjR0iRYOj5kZxhRdQAuhmOVeA2A7aqI4wCLcBGAsYHQ/s2048/techontop-huong-dan-trang-tri-goc-choi-game-1.jpg',
   ];

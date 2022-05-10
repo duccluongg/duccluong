@@ -18,7 +18,6 @@ import Ratings from './components/Rating/Rating';
 const ProductDetail = () => {
   const product = useSelector((s) => s.product.dataDetail) || {};
   const { id } = useParams();
-  const productImg = product?.images;
   const categoryId = product?.category?.id;
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -56,7 +55,10 @@ const ProductDetail = () => {
               </div>
             ) : (
               <div className={styles.col5}>
-                <SliderImg productImg={productImg} />
+                <div className={styles.img}>
+                  <img src={product.thumbnail} alt="" />
+                </div>
+                {/* <SliderImg productImg={productImg} /> */}
               </div>
             )}
             {loading ? (
@@ -69,8 +71,27 @@ const ProductDetail = () => {
               </div>
             )}
           </div>
+          <div className={styles.row}>
+            <div className={styles.col7}>
+              <h3 className={styles.headerProductDescription}>
+                Mô tả sản phẩm
+              </h3>
+              <div
+                className={styles.ProductDescription}
+                dangerouslySetInnerHTML={{ __html: product?.description }}
+              ></div>
+            </div>
+            <div className={styles.col3}>
+              <div className={styles.techInfor}>
+                <h3 className={styles.inforHeader}>Thông số kĩ thuật</h3>
+                <div className={styles.inforContainer}>
+                  {product?.specifications}
+                </div>
+              </div>
+            </div>
+          </div>
           <Ratings id={id} />
-          <ProductRelated categoryId={categoryId} />
+          {/* <ProductRelated categoryId={categoryId} /> */}
           <Footer />
         </React.Fragment>
       )}

@@ -3,14 +3,13 @@ import styles from './Selection4.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail } from '../../../../utils/ProductSlice';
 import { Link } from 'react-router-dom';
-import FormatCash from '../../../../utils/FormatCash';
 
 const Selection4 = () => {
   const dispatch = useDispatch();
   const product = useSelector((s) => s.product.dataDetail);
 
   useEffect(() => {
-    dispatch(getProductDetail(19050026));
+    dispatch(getProductDetail('6268001df6a950b8e76fbf57'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,9 +27,7 @@ const Selection4 = () => {
 
           <img className="img" src={product.thumbnail} alt="First slide" />
           <div className={styles.name}>{product.name}</div>
-          <div className={styles.price}>
-            {/* {FormatCash((product?.sale_price).toString())} đ */}
-          </div>
+          <div className={styles.price}>16.690.000 đ</div>
           <div className={styles.btn}>
             <Link to="/productDetail/19050026" className={styles.button}>
               Xem chi tiết sản phẩm

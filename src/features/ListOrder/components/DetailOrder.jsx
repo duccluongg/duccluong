@@ -17,6 +17,7 @@ const DetailOrder = () => {
   const toAcc = () => history.push('/account');
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/order');
+  console.log(detail);
 
   useEffect(() => {
     dispatch(getDetailOrder(id.id));

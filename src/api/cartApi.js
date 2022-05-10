@@ -5,7 +5,7 @@ import storageUser from '../constants/storageUser';
 function getListCart() {
   return axiosClient.get(URL.cartUrl, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
   });
 }
@@ -13,7 +13,7 @@ function getListCart() {
 function delListCart(data) {
   return axiosClient.delete(URL.cartUrl, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
     data,
   });
@@ -22,7 +22,7 @@ function delListCart(data) {
 function addToCart(data) {
   return axiosClient.put(URL.cartUrl + '/add', data, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
   });
 }
@@ -30,7 +30,7 @@ function addToCart(data) {
 function IncrToCart(data) {
   return axiosClient.put(URL.cartUrl + '/add', data, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
   });
 }
@@ -38,7 +38,7 @@ function IncrToCart(data) {
 function removeToCart(data) {
   return axiosClient.put(URL.cartUrl + '/remove', data, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
   });
 }
@@ -46,7 +46,7 @@ function removeToCart(data) {
 function deleteFromCart(data) {
   return axiosClient.delete(`${URL.cartUrl}`, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
     data,
   });

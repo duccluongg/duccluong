@@ -9,7 +9,7 @@ function getListComment(data) {
 function postComment(data) {
   return axiosClient.post(URL.userRatingUrl, data, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+      Authorization: `${sessionStorage.getItem(storageUser.TOKEN)}`,
     },
   });
 }

@@ -4,11 +4,13 @@
 }
 .col7 {
   width: 70%;
-  background-image: url('https://www.fpshub.com/wp-content/uploads/2021/09/i9sqnszashn71-scaled.jpg');
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
   height: fit-content;
+}
+.col7 img {
+  width: 100%;
 }
 .col3 {
   width: 30%;

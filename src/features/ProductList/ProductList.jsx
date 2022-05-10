@@ -20,6 +20,7 @@ const ProductList = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const category = useSelector((s) => s.category.list) || [];
+
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [fullLoading, setFullLoading] = useState(false);
@@ -50,7 +51,7 @@ const ProductList = () => {
     setLoading(true);
     const param = queryString.stringify(filters);
 
-    const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}`;
+    const getProductAPI = `http://localhost:3001/api/products?${param}&category=${id}`;
     axios
       .get(getProductAPI)
       .then((res) => {

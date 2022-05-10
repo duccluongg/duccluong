@@ -11,6 +11,7 @@ import storageUser from '../../constants/storageUser';
 
 const Header = () => {
   const user = useSelector((s) => s.auth.info);
+
   const history = useHistory();
   const category = useSelector((s) => s.category.list) || [];
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(userInfor());
+    dispatch(userInfor(storageUser.TOKEN));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

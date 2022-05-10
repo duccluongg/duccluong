@@ -37,7 +37,7 @@ const SlideCheckOut = ({ handleSubmit }) => {
   };
 
   useEffect(() => {
-    const getApi = 'https://yshuynh.pythonanywhere.com/api/payments';
+    const getApi = 'http://localhost:3001/api/payments';
     axios.get(getApi).then((response) => {
       setPayment(response.data);
     });

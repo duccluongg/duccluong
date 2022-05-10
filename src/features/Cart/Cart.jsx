@@ -19,7 +19,7 @@ import {
 const Cart = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const cart = useSelector((s) => s.cart.list);
+  const cart = useSelector((s) => s.cart.list) || [];
   const user = useSelector((s) => s.auth.info);
   const cartId = cart.map((item) => item.id);
   const cartQuantity = useSelector((s) => s.cart.quantity);
