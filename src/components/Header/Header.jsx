@@ -35,12 +35,13 @@ const Header = () => {
     if (temp === '') {
       setSearchList([]);
     } else {
-      const getApi = `https://yshuynh.pythonanywhere.com/api/products/lite?page_size=10&search_name=${temp}`;
+      const getApi = `http://localhost:3001/api/products/lite?page_size=5&search_name=${temp}`;
       axios.get(getApi).then((response) => {
         setSearchList(response.data.results);
       });
     }
   };
+  console.log(searchList);
 
   const logout = () => {
     sessionStorage.removeItem(storageUser.TOKEN);
