@@ -3,6 +3,7 @@ import styles from '../../ProductList.module.css';
 import { Link } from 'react-router-dom';
 import FormatCash from '../../../../utils/FormatCash';
 const Product = ({ product }) => {
+  console.log(product);
   return (
     <div className={styles.home__product}>
       <div className={styles.grid__row}>
@@ -19,7 +20,9 @@ const Product = ({ product }) => {
                   backgroundImage: `url(${item.thumbnail})`,
                 }}
               ></div>
-              <div className={styles.rating}>{item.avg_rating}</div>
+              {/* <div className={styles.rating}>
+                {item.avg_rating === null ? 0 : item.avg_rating}
+              </div> */}
               <h4 className={styles.home__productitemsname}>{item.name}</h4>
               <div className={styles.home__productprice}>
                 <span className={styles.home__productitemsprice}>

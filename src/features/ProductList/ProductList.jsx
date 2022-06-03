@@ -23,7 +23,7 @@ const ProductList = () => {
 
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [fullLoading, setFullLoading] = useState(false);
+  const [fullLoading, setFullLoading] = useState(true);
   const [filters, setFilters] = useState({
     page_size: 12,
     page: 1,
@@ -41,7 +41,6 @@ const ProductList = () => {
   }, []);
 
   useEffect(() => {
-    setFullLoading(true);
     setTimeout(() => {
       setFullLoading(false);
     }, 1500);
@@ -51,7 +50,7 @@ const ProductList = () => {
     setLoading(true);
     const param = queryString.stringify(filters);
 
-    const getProductAPI = `http://localhost:3001/api/products?${param}&category=${id}`;
+    const getProductAPI = `http://ec2-18-144-28-197.us-west-1.compute.amazonaws.com/api/products?${param}&category=${id}`;
     axios
       .get(getProductAPI)
       .then((res) => {

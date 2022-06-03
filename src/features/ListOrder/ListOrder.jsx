@@ -16,7 +16,7 @@ const ListOrder = () => {
   const toOrder = () => history.push('/listOrder');
   const order = useSelector((s) => s.order.list) || [];
   const user = useSelector((s) => s.auth.info);
-  const [fullLoading, setFullLoading] = useState(false);
+  const [fullLoading, setFullLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListOrder());
@@ -24,7 +24,6 @@ const ListOrder = () => {
   }, []);
 
   useEffect(() => {
-    setFullLoading(true);
     setTimeout(() => {
       setFullLoading(false);
     }, 1500);

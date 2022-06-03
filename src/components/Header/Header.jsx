@@ -35,7 +35,7 @@ const Header = () => {
     if (temp === '') {
       setSearchList([]);
     } else {
-      const getApi = `http://localhost:3001/api/products/lite?page_size=5&search_name=${temp}`;
+      const getApi = `http://ec2-18-144-28-197.us-west-1.compute.amazonaws.com/api/products/lite?page_size=5&search_name=${temp}`;
       axios.get(getApi).then((response) => {
         setSearchList(response.data.results);
       });

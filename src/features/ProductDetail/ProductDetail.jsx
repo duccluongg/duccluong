@@ -18,26 +18,17 @@ import Ratings from './components/Rating/Rating';
 const ProductDetail = () => {
   const product = useSelector((s) => s.product.dataDetail) || {};
   const { id } = useParams();
-  const categoryId = product?.category?.id;
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [fullLoading, setFullLoading] = useState(false);
+  const [fullLoading, setFullLoading] = useState(true);
 
   useEffect(() => {
     dispatch(getProductDetail(id));
-    setFullLoading(true);
     setTimeout(() => {
       setFullLoading(false);
     }, 500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  useEffect(() => {
-    setFullLoading(true);
-    setTimeout(() => {
-      setFullLoading(false);
-    }, 1500);
-  }, []);
 
   return (
     <React.Fragment>

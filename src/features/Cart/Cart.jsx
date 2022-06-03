@@ -24,10 +24,9 @@ const Cart = () => {
   const cartId = cart.map((item) => item.id);
   const cartQuantity = useSelector((s) => s.cart.quantity);
   const [total, setTotal] = useState(0);
-  const [fullLoading, setFullLoading] = useState(false);
+  const [fullLoading, setFullLoading] = useState(true);
 
   useEffect(() => {
-    setFullLoading(true);
     setTimeout(() => {
       setFullLoading(false);
     }, 1500);

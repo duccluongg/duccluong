@@ -37,7 +37,8 @@ const SlideCheckOut = ({ handleSubmit }) => {
   };
 
   useEffect(() => {
-    const getApi = 'http://localhost:3001/api/payments';
+    const getApi =
+      'http://ec2-18-144-28-197.us-west-1.compute.amazonaws.com/api/payments';
     axios.get(getApi).then((response) => {
       setPayment(response.data);
     });
