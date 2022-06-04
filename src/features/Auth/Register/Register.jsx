@@ -154,8 +154,8 @@ const Register = () => {
                   value={email}
                   onChange={handleChangeEmail}
                   size="small"
-                  validators={['required', 'isEmail']}
                   className={styles.textField}
+                  validators={['required', 'isEmail']}
                   errorMessages={[
                     'Nhập email',
                     'Email phải là địa chỉ email hợp lệ',
@@ -216,11 +216,13 @@ const Register = () => {
                   size="small"
                   validators={[
                     'required',
+                    'isNumber',
                     'minStringLength:9',
                     'maxStringLength:10',
                   ]}
                   errorMessages={[
                     'Nhập số điện thoại',
+                    'Chỉ được nhập số',
                     'Nhập ít nhất 9  chữ số',
                     'Nhập nhiều nhất 10 chữ số',
                   ]}

@@ -75,6 +75,11 @@ const UpdateProfle = ({ closeModal, setLoading }) => {
                 size="small"
                 value={email}
                 onChange={handleChangeEmail}
+                validators={['required', 'isEmail']}
+                errorMessages={[
+                  'Nhập email',
+                  'Email phải là địa chỉ email hợp lệ',
+                ]}
                 className={styles.textField}
               />
             </div>
@@ -108,6 +113,18 @@ const UpdateProfle = ({ closeModal, setLoading }) => {
                 autoComplete="off"
                 size="small"
                 value={phone}
+                validators={[
+                  'required',
+                  'isNumber',
+                  'minStringLength:9',
+                  'maxStringLength:10',
+                ]}
+                errorMessages={[
+                  'Nhập số điện thoại',
+                  'Chỉ được nhập số',
+                  'Nhập ít nhất 9  chữ số',
+                  'Nhập nhiều nhất 10 chữ số',
+                ]}
                 onChange={handleChangePhone}
                 className={styles.textField}
               />
