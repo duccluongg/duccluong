@@ -17,6 +17,7 @@ const Profile = () => {
   const toCart = () => history.push('/cart');
   const toOrder = () => history.push('/listOrder');
   const dispatch = useDispatch();
+  const img = require('../../assets/ava1.jpg');
   const [modal, setModal] = useState(false);
   const showModal = () => {
     setModal(!modal);
@@ -37,11 +38,7 @@ const Profile = () => {
       <div className={styles.container}>
         <div className={styles.col3}>
           <div className={styles.header}>
-            <img
-              alt="ava"
-              src="https://st2.depositphotos.com/2703645/11476/v/450/depositphotos_114764528-stock-illustration-man-avatar-character.jpg"
-              className={styles.imgHeader}
-            />
+            <img alt="ava" src={img} className={styles.imgHeader} />
             <div className={styles.nameHeader}>{user.name}</div>
           </div>
           <div className={styles.list}>
@@ -71,11 +68,7 @@ const Profile = () => {
             ) : (
               <div className={styles.Detail}>
                 <div className={styles.boxImg}>
-                  <img
-                    src="https://st2.depositphotos.com/2703645/11476/v/450/depositphotos_114764528-stock-illustration-man-avatar-character.jpg"
-                    alt="ava"
-                    className={styles.imgDetail}
-                  />
+                  <img src={img} alt="ava" className={styles.imgDetail} />
                   <div className={styles.boxName}>{user.name}</div>
                 </div>
                 <div className={styles.listDetails}>

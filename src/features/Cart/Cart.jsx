@@ -25,6 +25,7 @@ const Cart = () => {
   const cartQuantity = useSelector((s) => s.cart.quantity);
   const [total, setTotal] = useState(0);
   const [fullLoading, setFullLoading] = useState(true);
+  const img = require('../../assets/empty-cart.png');
 
   useEffect(() => {
     setTimeout(() => {
@@ -95,10 +96,7 @@ const Cart = () => {
                   </h2>
                   {cart.length === 0 ? (
                     <div className="cart-empty">
-                      <img
-                        src="https://rtworkspace.com/wp-content/plugins/rtworkspace-ecommerce-wp-plugin/assets/img/empty-cart.png"
-                        alt="emtycart"
-                      />
+                      <img src={img} alt="emtycart" />
                       <div className="start-shopping">
                         <Link to="/">
                           <svg

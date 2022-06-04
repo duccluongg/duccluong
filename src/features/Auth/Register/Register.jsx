@@ -124,8 +124,8 @@ const Register = () => {
                   value={passWord}
                   className={styles.textField}
                   size="small"
-                  validators={['required']}
-                  errorMessages={['Nhập mật khẩu', 'Mật khẩu ít nhất 8 chữ']}
+                  validators={['required', 'minStringLength:6']}
+                  errorMessages={['Nhập mật khẩu', 'Mật khẩu ít nhất 6 chữ']}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -214,8 +214,16 @@ const Register = () => {
                   onChange={handleChangePhone}
                   value={phone}
                   size="small"
-                  validators={['required']}
-                  errorMessages={['Nhập số điện thoại', 'Không được để trống']}
+                  validators={[
+                    'required',
+                    'minStringLength:9',
+                    'maxStringLength:10',
+                  ]}
+                  errorMessages={[
+                    'Nhập số điện thoại',
+                    'Nhập ít nhất 9  chữ số',
+                    'Nhập nhiều nhất 10 chữ số',
+                  ]}
                   className={styles.textField}
                 />
               </div>
